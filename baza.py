@@ -14,6 +14,12 @@ import time
 import wyborOpcjiGeneratora
 from menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
 import wyswietlacz
+import re
+
+
+class ZlaWarotsc(Exception):
+    pass
+
 
 def UtworzNowaBaze():
     """
@@ -106,7 +112,7 @@ def WyswietlBaze():
         print(" Baza nie istnieje, utwórz najpierw bazę!\n")
         mainBaza.Baza()
     else:
-        print("tu bedziemy wyświetlac baze\n")
+
         Menu_wyswietl2()
         wybor=Menu_wybor_opcji1()
         match wybor:
@@ -114,19 +120,34 @@ def WyswietlBaze():
                 wyswietlacz.Cała()
                 WyswietlBaze()
             case "2":
-                wyswietlacz.WyszukajWWW()
+                param=input("Wpisz jakiego serwisu WWW szukamy(Enter dla wszystkich wpisów WWW): ")
+                wyswietlacz.WyszukajWWW(param)
                 WyswietlBaze()
             case "3":
-                wyswietlacz.WyszukajMail()
+                param = input("Wpisz jakiego serwisu Email szukamy(Enter dla wszystkich wpisów Email): ")
+                wyswietlacz.WyszukajMail(param)
                 WyswietlBaze()
             case "4":
                 wyswietlacz.WyszukajNieokreslone()
                 WyswietlBaze()
             case "5":
-                wyswietlacz.WyszukajLogin()
+                control = True          #sprawdzenie czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu
+                while control:
+                    try:
+                        string = input("Wpisz jakiego loginu szukamy: ")
+                        x = re.search(r"^[a-zA-Z_\-]+$", string)  # regex dla ciągu z spacją
+                        if x:
+                            print("prawidłowy\n")
+                            control = False
+                        else:
+                            raise ZlaWarotsc()
+                    except ZlaWarotsc:
+                        print("Login posiada niedopuszczalny znak  podaj jeszcze raz: \n")
+                wyswietlacz.WyszukajLogin(string)
                 WyswietlBaze()
             case "6":
-                wyswietlacz.WyszukajOpis()
+                param = input("Jakiego wyrażenia szukamy w opisie: ")
+                wyswietlacz.WyszukajOpis(param)
                 WyswietlBaze()
             case "7":
                 wyswietlacz.WyszukajData()
@@ -142,7 +163,7 @@ def WyswietlBaze():
 
 def MenuDodajWpis():
     """
-    Zbieranie parametrówi przekkazanie ich do funkcji samego dodawania.
+    Zbieranie parametrów i przekkazanie ich do funkcji samego dodawania.
     Poszczególne operacje:
     podawanie rodzaju wpisu, walidacja tego rodzaju, pytanie o hasło (generowanie, wpisanie czy wklejenie),
     podawanie loginu przypisanego do hasła, adresu usługi i ewentualnie opisu, w przypadku braku opisu, wstawiany jest ciąg

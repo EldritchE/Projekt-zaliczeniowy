@@ -50,7 +50,7 @@ def Menu_wybor_opcji1():
     Funkcja realizująca wybory użytkownika z walidacją tych wyborów.
         :return:
     """
-    wybor = input("Dokonaj wyboru(1,2,3,4,5,6,7, lub 8)")
+    wybor = input("Dokonaj wyboru(1,2,3,4,5,6,7, lub 8)\n")
     match wybor:
         case "1":
             # print("wybrano 1")
