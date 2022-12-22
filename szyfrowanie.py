@@ -20,7 +20,7 @@ def Klucz():        #pobranie warości klucza od użytkownika z walidacją wprow
 
 
 
-def Deszyfruj(wynik,klucz):#deszyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w lewo
+def Deszyfruj(wynik,klucz=26):#deszyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w lewo
 
     wynik2=""
     ciag=wynik
@@ -34,7 +34,7 @@ def Deszyfruj(wynik,klucz):#deszyfrowanie przez przestawienie kolejnych liter na
 
 
 
-def Szyfrowanie(ciag, klucz): #szyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w prawo
+def Szyfrowanie(ciag, klucz=26): #szyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w prawo
 
     wynik = ""
     for i in range(len(ciag)):  # pętla po kolejnych znakach ciagu

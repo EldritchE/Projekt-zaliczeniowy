@@ -3,48 +3,82 @@ Moduł odpowiadający za wyszukiwanie i wyświetlanie
 z bazy danych
 """
 import sqlite3
-import pandas
-import pandas as pd
+from szyfrowanie import Deszyfruj, Szyfrowanie
 
-
-def Cała():
-    """Funkcja pobiera i wyświetla dane z calej  bazy."""
+def WyświetlZadane(wyszukiwanie,wyroznienie=0):
     con = sqlite3.connect("baza_glowna.db")
-
     cur = con.cursor()
 
+    sqlite_select_query = wyszukiwanie
+    cur.execute(sqlite_select_query)
+    records = cur.fetchall()
 
-    cur.execute(
-        """
-        SELECT Rodzaj_hasła,Login,Hasło,Adres,Data_utworzenia,Dodatkowy_opis FROM Sejf 
-        """)
-    wpisy = cur.fetchall()
-    tabela = pd.DataFrame(wpisy)
-    tabela.columns = 'Rodzaj Hasła', 'Login', 'Hasło', 'Adres', 'Data Utworzenia', 'Dodatkowy opis'
-    print(tabela)
-    # for wpis in wpisy:
-    #
-    #     print(wpis[0],"\t",wpis[1],"\t",wpis[2],"\t", wpis[3],"\t", wpis[4],"\t",wpis[5],"\t", wpis[6])
-    # print()
+
+    for row in records:
+        if wyroznienie==0:
+            print('-'*36)
+        print("Id: ", row[0])
+        if wyroznienie==0:
+            print('-' * 36)
+        if wyroznienie==1:
+            print('-' * 36)
+        print("Rodzaj Hasła: ", row[1])
+        if wyroznienie == 1:
+            print('-' * 36)
+        if wyroznienie == 2:
+            print('-' * 36)
+        print("Login: ", Deszyfruj(row[2]))
+        if wyroznienie == 2:
+            print('-' * 36)
+        print("Hasło: ", Deszyfruj(row[3]))
+        print("Adres usługi: ", row[4])
+        print("Data utworzenia: ", row[5])
+        print("Dodatkowy opis: ", row[6])
+        print("\n")
 
     con.commit()
     con.close()
+    print("Znaleziono:  ", len(records), " rekordów.")
+    return
 
-
-
+def Cała():
+    """Funkcja pobiera i wyświetla dane z calej  bazy."""
+    wyszukiwanie="SELECT * from Sejf "
+    wyroznienie=0
+    WyświetlZadane(wyszukiwanie,wyroznienie)
+    return
 def WyszukajWWW():
-    pass
+    """Funkcja pobiera i wyświetla dane dla serwisów WWW."""
+    wyszukiwanie = "SELECT * from Sejf where Rodzaj_hasła='Usługa WWW'"
+    wyroznienie = 1
+    WyświetlZadane(wyszukiwanie, wyroznienie)
+    return
 
 def WyszukajMail():
-    pass
+    """Funkcja pobiera i wyświetla dane dla serwisów emailowych."""
+    wyszukiwanie = "SELECT * from Sejf where Rodzaj_hasła='Usługa Email'"
+    wyroznienie = 1
+    WyświetlZadane(wyszukiwanie, wyroznienie)
+    return
 
 
 def WyszukajNieokreslone():
-    pass
+    """Funkcja pobiera i wyświetla dane dla serwisów nieokreślonych."""
+    wyszukiwanie = "SELECT * from Sejf where Rodzaj_hasła='Inne'"
+    wyroznienie = 1
+    WyświetlZadane(wyszukiwanie, wyroznienie)
+    return
 
 
 def WyszukajLogin():
-    pass
+    """Funkcja pobiera i wyświetla dane dla podanego loginu."""
+    login= Szyfrowanie(input("Podaj poszukiwany login: "))
+
+    wyszukiwanie = f"SELECT * from Sejf where login='{login}'"
+    WyświetlZadane(wyszukiwanie)
+    wyroznienie = 2
+    WyświetlZadane(wyszukiwanie, wyroznienie)
+    return
 
 
 def WyszukajOpis():

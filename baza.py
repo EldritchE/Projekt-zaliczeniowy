@@ -112,28 +112,25 @@ def WyswietlBaze():
         match wybor:
             case "1":
                 wyswietlacz.Cała()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "2":
                 wyswietlacz.WyszukajWWW()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "3":
                 wyswietlacz.WyszukajMail()
-                mainBaza.Baza()
-            case "4":
-                wyswietlacz.WyszukajLogin()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "4":
                 wyswietlacz.WyszukajNieokreslone()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "5":
                 wyswietlacz.WyszukajLogin()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "6":
                 wyswietlacz.WyszukajOpis()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "7":
                 wyswietlacz.WyszukajData()
-                mainBaza.Baza()
+                WyswietlBaze()
             case "8":
                 mainBaza.Baza()
             case other:
