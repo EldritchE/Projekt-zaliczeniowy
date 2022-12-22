@@ -8,14 +8,16 @@ oraz zawierania co najmniej jednej cyfry
 from zapiszClipboard import dodajDoSchowka
 from generator import Generowanie
 
+
 class ZlyWybor(Exception):
     pass
+
+
 def Wybor_dlugosci_hasla():
     """
     Wybór długości hasła, z walidacją do max 40 znaków.
     :return:
     """
-
 
     try:
         global dlugoscHasla
@@ -43,7 +45,7 @@ def Czy_specjalne():
     bez względu na wielkość liter).
     :return:
     """
-    czy_specjalne=""
+    czy_specjalne = ""
     while czy_specjalne != 'T' and czy_specjalne != 'N':
         try:
             czy_specjalne = input("Czy hasło ma zawierać przynajmniej jeden znak specjalny ? (T/N)")
@@ -61,8 +63,6 @@ def Czy_specjalne():
         case "N":
             znaki_specjalne = False
             return znaki_specjalne
-
-
 
 
 def Czy_zawiera_liczbe():
@@ -91,8 +91,6 @@ def Czy_zawiera_liczbe():
         case "N":
             zawiera_liczbe = False
             return zawiera_liczbe
-
-
 
 
 def Wybor():

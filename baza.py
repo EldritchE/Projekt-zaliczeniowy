@@ -3,7 +3,7 @@
 Wszystkie funkcje do operacji na bazie danych
 
 """
-from szyfrowanie import Klucz,Deszyfruj,Szyfrowanie
+from szyfrowanie import Klucz, Deszyfruj, Szyfrowanie
 import walidacjeDlaBazyDanych
 import pyperclip
 import sqlite3
@@ -114,13 +114,13 @@ def WyswietlBaze():
     else:
 
         Menu_wyswietl2()
-        wybor=Menu_wybor_opcji1()
+        wybor = Menu_wybor_opcji1()
         match wybor:
             case "1":
                 wyswietlacz.Cała()
                 WyswietlBaze()
             case "2":
-                param=input("Wpisz jakiego serwisu WWW szukamy(Enter dla wszystkich wpisów WWW): ")
+                param = input("Wpisz jakiego serwisu WWW szukamy(Enter dla wszystkich wpisów WWW): ")
                 wyswietlacz.WyszukajWWW(param)
                 WyswietlBaze()
             case "3":
@@ -131,7 +131,7 @@ def WyswietlBaze():
                 wyswietlacz.WyszukajNieokreslone()
                 WyswietlBaze()
             case "5":
-                control = True          #sprawdzenie czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu
+                control = True  # sprawdzenie czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu
                 while control:
                     try:
                         string = input("Wpisz jakiego loginu szukamy: ")
@@ -207,8 +207,8 @@ def MenuDodajWpis():
 
     loginJawny = walidacjeDlaBazyDanych.SprawdzLogin()
 
-    klucz=Klucz()
-    login=Szyfrowanie(loginJawny,klucz)
+    klucz = Klucz()
+    login = Szyfrowanie(loginJawny, klucz)
 
     haslojawne = ""
     wybor = input("hasło wpisujesz sam czy chcesz wygenerować ?\n"
@@ -236,7 +236,6 @@ def MenuDodajWpis():
             mainBaza.Baza()
         case other:
             return
-
 
     opis = input("Jeśli chcesz umieścic dodatkowy opis to tutaj:\n"
                  "jeśli niechcesz opisu lub skończysz pisac nacisnij ENTER.")

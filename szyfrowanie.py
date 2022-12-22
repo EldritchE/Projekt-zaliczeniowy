@@ -4,8 +4,10 @@ Moduł stworzony przeze mnie na potrzeby inmnych zajęć, funkcje zbedne do
 prawidłowego działania w aplkikacji hasła, zostały zakomentowane.
 
 """
-def Klucz():        #pobranie warości klucza od użytkownika z walidacją wprowadzonych danych
-    klucz=26
+
+
+def Klucz():  # pobranie warości klucza od użytkownika z walidacją wprowadzonych danych
+    klucz = 26
     return klucz
     # try:
     #     klucz = int(input("podaj klucz szyfrujący"))
@@ -18,12 +20,11 @@ def Klucz():        #pobranie warości klucza od użytkownika z walidacją wprow
     #     Klucz()
 
 
+def Deszyfruj(wynik,
+              klucz=26):  # deszyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w lewo
 
-
-def Deszyfruj(wynik,klucz=26):#deszyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w lewo
-
-    wynik2=""
-    ciag=wynik
+    wynik2 = ""
+    ciag = wynik
     for i in range(len(ciag)):  # pętla po kolejnych znakach ciagu
 
         wynik2 += chr(ord(ciag[i]) - klucz)  # zapisuje ostatni wyraz z ciag jako pierwszy w str wynik
@@ -31,16 +32,14 @@ def Deszyfruj(wynik,klucz=26):#deszyfrowanie przez przestawienie kolejnych liter
     return wynik2
 
 
-
-
-
-def Szyfrowanie(ciag, klucz=26): #szyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w prawo
+def Szyfrowanie(ciag,
+                klucz=26):  # szyfrowanie przez przestawienie kolejnych liter na litery przesunięte o klucz w prawo
 
     wynik = ""
     for i in range(len(ciag)):  # pętla po kolejnych znakach ciagu
 
         wynik += chr(ord(ciag[i]) + klucz)  # zapisuje ostatni wyraz z ciag jako pierwszy w str wynik
-        wynik2=wynik
+        wynik2 = wynik
     return wynik
 
 # def Wydruk(ciag,klucz,wynik):

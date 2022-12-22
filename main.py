@@ -6,7 +6,6 @@ Główny moduł programu.
 
 """
 
-
 import sys
 from wyborOpcjiGeneratora import Wybor
 from mainBaza import Baza
@@ -14,6 +13,8 @@ from mainBaza import Baza
 
 class ZlaWarotsc(Exception):
     pass
+
+
 class StringZamiastInt(Exception):
     pass
 
@@ -55,10 +56,7 @@ def MenuGlowne():
             MenuGlowne()
 
 
-
-
-
-print("--"*50)
+print("--" * 50)
 print("Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D")
-print("--"*50)
+print("--" * 50)
 MenuGlowne()

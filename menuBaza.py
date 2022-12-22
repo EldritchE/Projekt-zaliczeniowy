@@ -25,6 +25,7 @@ def Menu_wyswietl():
 
     return
 
+
 def Menu_wyswietl2():
     """
     Wyświetlanie Menu Bazy danych.
@@ -44,6 +45,7 @@ def Menu_wyswietl2():
     print("\n\n")
 
     return
+
 
 def Menu_wybor_opcji1():
     """
@@ -80,6 +82,8 @@ def Menu_wybor_opcji1():
             print("nie dokonano właściwego wyboru\n")
             Menu_wybor_opcji1()
     mainBaza.Baza()
+
+
 def Menu_wybor_opcji():
     """
     Funkcja realizująca wybory użytkownika z walidacją tych wyborów.

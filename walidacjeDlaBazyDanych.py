@@ -1,40 +1,47 @@
 import re
+
+
 class ZlaWarotsc(Exception):
     pass
 
+
 def SprawdzMaila():
-    control=True
+    control = True
     while control:
         try:
             string = input("Podaj adres email :")
             string = string.lower()
-            x = re.search(r"(\w+\.?|-?\w+?)+@\w+\.?-?\w+?(\.\w{2,3})+", string)  # regex dla ciągu bedącego adresem email
+            x = re.search(r"(\w+\.?|-?\w+?)+@\w+\.?-?\w+?(\.\w{2,3})+",
+                          string)  # regex dla ciągu bedącego adresem email
             if x:
                 print("prawidłowy\n")
-                control=False
+                control = False
             else:
                 raise ZlaWarotsc()
         except ZlaWarotsc:
             print("zly adres email! Podaj jeszce raz: \n")
     return string
 
+
 def SprawdzWWW():
-    control=True
+    control = True
     while control:
         try:
             string = input("Podaj adres WWW :")
-            string=string.lower()
-            x = re.search(r"^www.[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$", string)  # regex dla ciągu bedącego adresem WWW
+            string = string.lower()
+            x = re.search(r"^www.[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$",
+                          string)  # regex dla ciągu bedącego adresem WWW
             if x:
                 print("prawidłowy\n")
-                control=False
+                control = False
             else:
                 raise ZlaWarotsc()
         except ZlaWarotsc:
             print("zly adres WWW!(prawidłowa postać :'www.nazwa.com') Podaj jeszce raz: \n")
     return string
 
-def SprawdzLogin():  #sprawdzanie czy login nie ma baiłych znaków
+
+def SprawdzLogin():  # sprawdzanie czy login nie ma baiłych znaków
     control = True
     while control:
         try:
@@ -48,7 +55,6 @@ def SprawdzLogin():  #sprawdzanie czy login nie ma baiłych znaków
         except ZlaWarotsc:
             print("Login posiada niedopuszczalny znak  podaj jeszcze raz: \n")
     return string
-
 
 
 def SprawdzHasloJesliZReki():
@@ -65,4 +71,3 @@ def SprawdzHasloJesliZReki():
         except ZlaWarotsc:
             print("Login posiada niedopuszczalny znak  podaj jeszcze raz: \n")
     return string
-
