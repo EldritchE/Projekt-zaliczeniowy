@@ -6,79 +6,81 @@ import sqlite3
 from szyfrowanie import Deszyfruj, Szyfrowanie
 
 
-def WyświetlZadane(wyszukiwanie,wyroznienie=0):
+def WyświetlZadane(wyszukiwanie, wyroznienie=0):
     """
         Procedura wydruku wyszkiwanych danych ze zdefiniowanymi parametrami.
         :param wyszukiwanie:
         :param wyroznienie:
         :return:
         """
-    przerwana=False # zmienna determinująca wyswietlanie komunikatu o ilości znalezionych rekordów jeśli przerwano proces wyświetlania.
-    con = sqlite3.connect("baza_glowna.db") #procedury otwarcia bazy danych ustawienia kursora
+    przerwana = False  # zmienna determinująca wyswietlanie komunikatu o ilości znalezionych rekordów jeśli przerwano proces wyświetlania.
+    con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
     cur = con.cursor()
 
     sqlite_select_query = wyszukiwanie
     cur.execute(sqlite_select_query)
     records = cur.fetchall()
 
-    licznik=0
+    licznik = 0
     for row in records:  # iteracja po wszystkich znalezionych rekordach pasujących do wyszukiwania.
 
-        if wyroznienie==0:
-            print('-'*36)
-        print("Znaleziony: ", row[0])
-        if wyroznienie==0:
+        if wyroznienie == 0:
             print('-' * 36)
-        if wyroznienie==1:
+        print("Znaleziony: ", row[0])
+        if wyroznienie == 0:
+            print('-' * 36)
+        if wyroznienie == 1:
             print('-' * 36)
         print("Rodzaj Hasła: ", row[1])
         if wyroznienie == 1:
             print('-' * 36)
         if wyroznienie == 2:
             print('-' * 36)
-        print("Login: ", Deszyfruj(row[2]))    #deszyfrowanie przed wyświetleniem
+        print("Login: ", Deszyfruj(row[2]))  # deszyfrowanie przed wyświetleniem
         if wyroznienie == 2:
             print('-' * 36)
-        print("Hasło: ", Deszyfruj(row[3]))     #deszyfrowanie przed wyświetleniem
+        print("Hasło: ", Deszyfruj(row[3]))  # deszyfrowanie przed wyświetleniem
         print("Adres usługi: ", row[4])
         print("Data utworzenia: ", row[5])
-        if wyroznienie==3:
+        if wyroznienie == 3:
             print('-' * 36)
         print("Dodatkowy opis: ", row[6])
-        if wyroznienie==3:
+        if wyroznienie == 3:
             print('-' * 36)
         print("\n")
-        licznik+=1      #licznik dla zatrzymania wyświetlania po 4 rekordach
-        if licznik==3:
-            test=input("....Nacisnij Enter(dalej)... Wpisz 'q' żeby zakończyć" )
-            if test=="q":  # Wcześniejsze wyjście z pętli wyświetlania na rządanie
+        licznik += 1  # licznik dla zatrzymania wyświetlania po 4 rekordach
+        if licznik == 3:
+            test = input("....Nacisnij Enter(dalej)... Wpisz 'q' żeby zakończyć")
+            if test == "q":  # Wcześniejsze wyjście z pętli wyświetlania na rządanie
                 licznik = 0
-                przerwana=True # zmienna determinująca wyswietlanie komunikatu o ilości znalezionych rekordów jeśli przerwano proces wyświetlania.
+                przerwana = True  # zmienna determinująca wyswietlanie komunikatu o ilości znalezionych rekordów jeśli przerwano proces wyświetlania.
                 break
 
-            licznik=0
+            licznik = 0
 
     con.commit()
     con.close()
-    if przerwana:       #komunikat jeśli przerwano wyświetlanie rekordów
+    if przerwana:  # komunikat jeśli przerwano wyświetlanie rekordów
         print("\nZnaleziono:  ", len(records),
               " rekordów.")
         print(",ale nie wyświetlono wszytkich (operacja przerwana) !!\n")
     else:
-        print("Znaleziono:  ", len(records), " rekordów i wszystkie wyświetlono\n") # jeśli wyświetlono wszystkie
-    input("Enter aby powrócic do menu.") # input powstrzymujący przed przypadkowym kliknieciem entera
-                                                # (duża iloć ekranów z danymi powoduje, że klikając szybko można rozwalić menu
+        print("Znaleziono:  ", len(records), " rekordów i wszystkie wyświetlono\n")  # jeśli wyświetlono wszystkie
+    input("Enter aby powrócic do menu.")  # input powstrzymujący przed przypadkowym kliknieciem entera
+    # (duża iloć ekranów z danymi powoduje, że klikając szybko można rozwalić menu
 
 
 def Cała():
     """Funkcja pobiera i wyświetla dane z całej bazy."""
-    wyszukiwanie="SELECT * from Sejf "
-    wyroznienie=0
-    WyświetlZadane(wyszukiwanie,wyroznienie)
+    wyszukiwanie = "SELECT * from Sejf "
+    wyroznienie = 0
+    WyświetlZadane(wyszukiwanie, wyroznienie)
     return
+
+
 def WyszukajWWW(param):
     """Funkcja pobiera i wyświetla dane dla serwisów WWW."""
-    if param=="":  #param to zmienna przekazująca szukany ciąg
+    if param == "":  # param to zmienna przekazująca szukany ciąg
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW'"
 
     else:
@@ -87,9 +89,10 @@ def WyszukajWWW(param):
     WyświetlZadane(wyszukiwanie, wyroznienie)
     return
 
+
 def WyszukajMail(param):
     """Funkcja pobiera i wyświetla dane dla serwisów emailowych."""
-    if param=="":
+    if param == "":
         wyszukiwanie = "SELECT * from Sejf where Rodzaj_hasła='Usługa Email'"
 
     else:
@@ -109,8 +112,8 @@ def WyszukajNieokreslone():
 
 def WyszukajLogin(string):
     """Funkcja pobiera i wyświetla dane dla podanego loginu."""
-    szukane = f"LIKE '%{Szyfrowanie(string)}%'"                     ##maska na szukanie wyrazęnia zawierającego string
-                                                                    # i mponowne szyfrowanie celem znalezienia loginu (baza jest zaszyfrowana w tym polu
+    szukane = f"LIKE '%{Szyfrowanie(string)}%'"  ##maska na szukanie wyrazęnia zawierającego string
+    # i mponowne szyfrowanie celem znalezienia loginu (baza jest zaszyfrowana w tym polu
     wyszukiwanie = f"SELECT * from Sejf where Login {szukane} "
 
     wyroznienie = 2
@@ -121,7 +124,7 @@ def WyszukajLogin(string):
 def WyszukajOpis(param):
     """Funkcja pobiera i wyświetla dane dla podanego słowa z opisu."""
 
-    szukane = f"LIKE '%{param}%'" #maska na szukanie wyrazęnia zawierającego strin param
+    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrazęnia zawierającego strin param
 
     wyszukiwanie = f"SELECT * from Sejf where Dodatkowy_opis {szukane}"
 
@@ -132,5 +135,3 @@ def WyszukajOpis(param):
 
 def WyszukajData():
     pass
-
-
