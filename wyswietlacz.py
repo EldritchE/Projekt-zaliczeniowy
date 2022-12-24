@@ -17,7 +17,7 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
     con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
     cur = con.cursor()
 
-    sqlite_select_query = wyszukiwanie
+    sqlite_select_query = wyszukiwanie  #przypisanie zdefiniowanej opcji SELECT dla bazy ze względu na wcześniejsze wybory co do przeszukania
     cur.execute(sqlite_select_query)
     records = cur.fetchall()
 
@@ -44,7 +44,10 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
         print("Data utworzenia: ", row[5])
         if wyroznienie == 3:
             print('-' * 36)
-        print("Dodatkowy opis: ", row[6])
+        opis = row[6]
+        if opis == "":
+            opis = "(brak)"
+        print("Dodatkowy opis: ", opis)
         if wyroznienie == 3:
             print('-' * 36)
         print("\n")
@@ -58,16 +61,16 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
 
             licznik = 0
 
-    con.commit()
-    con.close()
+    con.commit()  #wykonanie
+    con.close()   #zamknięcie bazy
     if przerwana:  # komunikat jeśli przerwano wyświetlanie rekordów
         print("\nZnaleziono:  ", len(records),
               " rekordów.")
         print(",ale nie wyświetlono wszytkich (operacja przerwana) !!\n")
     else:
         print("Znaleziono:  ", len(records), " rekordów i wszystkie wyświetlono\n")  # jeśli wyświetlono wszystkie
-    input("Enter aby powrócic do menu.")  # input powstrzymujący przed przypadkowym kliknieciem entera
-    # (duża iloć ekranów z danymi powoduje, że klikając szybko można rozwalić menu
+    input("Enter aby powrócic do menu.")  # input powstrzymujący przed przypadkowym kliknięciem entera
+    # (duża ilość ekranów z danymi powoduje, że klikając szybko można rozwalić menu
 
 
 def Cała():

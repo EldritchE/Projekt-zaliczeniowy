@@ -8,8 +8,6 @@ import walidacjeDlaBazyDanych
 import pyperclip
 import sqlite3
 import mainBaza
-from shutil import copyfile
-import os, sys, stat
 import time
 import wyborOpcjiGeneratora
 from menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
@@ -239,8 +237,6 @@ def MenuDodajWpis():
 
     opis = input("Jeśli chcesz umieścic dodatkowy opis to tutaj:\n"
                  "jeśli niechcesz opisu lub skończysz pisac nacisnij ENTER.")
-    if opis == "":
-        opis = "brak opisu"
 
     DodawanieWpisu(rodzaj_wpisu, login, haslo, adres, opis)
 
@@ -263,7 +259,8 @@ def DodawanieWpisu(rodzaj_wpisu, login, haslo, adres, opis):
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     cur.execute('INSERT INTO Sejf VALUES(NULL, ?, ?, ?, ?, ?, ?);', (rodzaj_wpisu, login, haslo, adres, data, opis))
-    con.commit()
+    con.commit()    #wykonanie
+    con.close()     #zamknięcie bazy
 
 
 def Wybory(wybor):

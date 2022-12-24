@@ -29,7 +29,7 @@ def SprawdzWWW():
         try:
             string = input("Podaj adres WWW :")
             string = string.lower()
-            x = re.search(r"^www.[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$",
+            x = re.search(r"^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$",
                           string)  # regex dla ciągu bedącego adresem WWW
             if x:
                 print("prawidłowy\n")
@@ -37,7 +37,7 @@ def SprawdzWWW():
             else:
                 raise ZlaWarotsc()
         except ZlaWarotsc:
-            print("zly adres WWW!(prawidłowa postać :'www.nazwa.com') Podaj jeszce raz: \n")
+            print("zly adres WWW!(prawidłowa postać :'nazwa.com') Podaj jeszce raz: \n")
     return string
 
 
