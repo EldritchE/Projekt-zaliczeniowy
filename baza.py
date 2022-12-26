@@ -156,7 +156,7 @@ def WyswietlBaze():
                 print("nie dokonano właściwego wyboru\n")
                 return
 
-        mainBaza.Baza()
+        # mainBaza.Baza()
 
 
 def MenuDodajWpis():
@@ -189,8 +189,8 @@ def MenuDodajWpis():
         case "4":
             print("Przerwane !!\n")
             mainBaza.Baza()
-        case other:
             return
+
 
     match rodzaj_wpisu:
         case ("Usługa WWW"):  # zalezności od wyboru rodzaju wpis ( czy strona www czy email czy haslojawne typu inne odpowiedni wybór dla pola adres
@@ -232,7 +232,6 @@ def MenuDodajWpis():
         case "4":
             print("przerwane !!\n")
             mainBaza.Baza()
-        case other:
             return
 
     opis = input("Jeśli chcesz umieścic dodatkowy opis to tutaj:\n"
