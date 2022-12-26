@@ -4,6 +4,7 @@ z bazy danych
 """
 import sqlite3
 from szyfrowanie import Deszyfruj, Szyfrowanie
+from koloruj import color_text
 
 
 def WyświetlZadane(wyszukiwanie, wyroznienie=0):
@@ -17,7 +18,7 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
     con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
     cur = con.cursor()
 
-    sqlite_select_query = wyszukiwanie  #przypisanie zdefiniowanej opcji SELECT dla bazy ze względu na wcześniejsze wybory co do przeszukania
+    sqlite_select_query = wyszukiwanie  # przypisanie zdefiniowanej opcji SELECT dla bazy ze względu na wcześniejsze wybory co do przeszukania
     cur.execute(sqlite_select_query)
     records = cur.fetchall()
 
@@ -31,23 +32,38 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
             print('-' * 36)
         if wyroznienie == 1:
             print('-' * 36)
-        print("Rodzaj Hasła: ", row[1])
+
+        print("Rodzaj Hasła: ", color_text('red', row[1]))
         if wyroznienie == 1:
             print('-' * 36)
         if wyroznienie == 2:
             print('-' * 36)
-        print("Login: ", Deszyfruj(row[2]))  # deszyfrowanie przed wyświetleniem
+        print("Login: ", color_text('green', Deszyfruj(row[2])))  # deszyfrowanie przed wyświetleniem
         if wyroznienie == 2:
             print('-' * 36)
-        print("Hasło: ", Deszyfruj(row[3]))  # deszyfrowanie przed wyświetleniem
-        print("Adres usługi: ", row[4])
+        print("Hasło: ", color_text('magenta', Deszyfruj(row[3])))  # deszyfrowanie przed wyświetleniem
+        if wyroznienie == 4:
+            print('-' * 36)
+            print("Adres usługi: ", color_text('yellow', row[4]))
+            print('-' * 36)
+
+        if wyroznienie == 5:
+            print('-' * 36)
+            print("Adres usługi: ", color_text('yellow', row[4]))
+            print('-' * 36)
+        if wyroznienie != 4 and wyroznienie != 5 and row[4] != "Usługa niezdefiniowana":
+            print("Adres usługi: ", color_text('yellow', row[4]))
+        if wyroznienie != 4 and wyroznienie != 5 and row[4] == "Usługa niezdefiniowana":
+            print("Adres usługi: ", color_text('cyan', row[4]))
+
         print("Data utworzenia: ", row[5])
         if wyroznienie == 3:
             print('-' * 36)
+
         opis = row[6]
         if opis == "":
             opis = "(brak)"
-        print("Dodatkowy opis: ", opis)
+        print("Dodatkowy opis: ", color_text('blue', opis))
         if wyroznienie == 3:
             print('-' * 36)
         print("\n")
@@ -61,8 +77,8 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
 
             licznik = 0
 
-    con.commit()  #wykonanie
-    con.close()   #zamknięcie bazy
+    con.commit()  # wykonanie
+    con.close()  # zamknięcie bazy
     if przerwana:  # komunikat jeśli przerwano wyświetlanie rekordów
         print("\nZnaleziono:  ", len(records),
               " rekordów.")
@@ -87,8 +103,9 @@ def WyszukajWWW(param):
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW'"
 
     else:
+        szukane = f"LIKE '%{param}%'"
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW' AND Adres='{param}'"
-    wyroznienie = 1
+    wyroznienie = 5
     WyświetlZadane(wyszukiwanie, wyroznienie)
     return
 
@@ -100,7 +117,7 @@ def WyszukajMail(param):
 
     else:
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa Email' AND Adres='{param}'"
-    wyroznienie = 1
+    wyroznienie = 4
     WyświetlZadane(wyszukiwanie, wyroznienie)
     return
 
@@ -127,7 +144,7 @@ def WyszukajLogin(string):
 def WyszukajOpis(param):
     """Funkcja pobiera i wyświetla dane dla podanego słowa z opisu."""
 
-    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrazęnia zawierającego strin param
+    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrazęnia zawierającego string param
 
     wyszukiwanie = f"SELECT * from Sejf where Dodatkowy_opis {szukane}"
 

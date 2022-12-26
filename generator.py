@@ -56,7 +56,7 @@ def Generowanie(dlugosc_hasla, znaki_specjalne, zawiera_liczbe):
                 else:
 
                     continue
-            x = re.search(r"(?=(?:.*\d){1,})", haslo)  # regex dla ciągu zawierającego co najmniej jedena cyfrę
+            x = re.search(r"(?=(?:.*\d){1,})", haslo)  # regex dla ciągu zawierającego co najmniej jedną cyfrę
             if x:
                 czy_sie_zgadza = True
         return haslo
@@ -76,7 +76,7 @@ def Generowanie(dlugosc_hasla, znaki_specjalne, zawiera_liczbe):
                     i += 1
             x = re.search(r"(?=(?:.*[!@#$%^&*()\-_=+{};:,.]){1,})",
                           haslo)  # regex dla ciągu zawierającego co najmniej jeden znak specjalny
-            y = re.search(r"(?=(?:.*\d){1,})", haslo)  # regex dla ciągu zawierającego co najmniej jedena cyfrę
+            y = re.search(r"(?=(?:.*\d){1,})", haslo)  # regex dla ciągu zawierającego co najmniej jedną cyfrę
             if x and not y:
                 czy_jest_znak_specj = True
 

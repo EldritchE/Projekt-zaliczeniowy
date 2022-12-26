@@ -129,7 +129,7 @@ def WyswietlBaze():
                 wyswietlacz.WyszukajNieokreslone()
                 WyswietlBaze()
             case "5":
-                control = True  # sprawdzenie czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu
+                control = True  #sprawdzenie, czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu.
                 while control:
                     try:
                         string = input("Wpisz jakiego loginu szukamy: ")
