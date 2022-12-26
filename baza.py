@@ -228,7 +228,6 @@ def MenuDodajWpis():
         case "3":
             haslojawne = pyperclip.paste()
             haslo = Szyfrowanie(haslojawne, klucz)
-
         case "4":
             print("przerwane !!\n")
             mainBaza.Baza()
