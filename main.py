@@ -10,6 +10,7 @@ import sys
 from wyborOpcjiGeneratora import Wybor
 from mainBaza import Baza
 from koloruj import color_text
+import masterPass
 
 
 class ZlaWarotsc(Exception):
@@ -51,8 +52,7 @@ def MenuGlowne():
             Baza()
             MenuGlowne()
         case 3:
-            pass
-        case 4:
+            masterPass.mPassword()
             sys.exit()
         case other:
             MenuGlowne()
