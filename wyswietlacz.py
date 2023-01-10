@@ -55,8 +55,11 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
             print("Adres usługi: ", color_text('yellow', row[4]))
         if wyroznienie != 4 and wyroznienie != 5 and row[4] == "Usługa niezdefiniowana":
             print("Adres usługi: ", color_text('cyan', row[4]))
-
+        if wyroznienie == 6:
+            print('-' * 36)
         print("Data utworzenia: ", row[5])
+        if wyroznienie == 6:
+            print('-' * 36)
         if wyroznienie == 3:
             print('-' * 36)
 
@@ -80,12 +83,17 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
     con.commit()  # wykonanie
     con.close()  # zamknięcie bazy
     if przerwana:  # komunikat, jeśli przerwano wyświetlanie rekordów
-        print("\nZnaleziono:  ", len(records),
-              " rekordów.")
-        print(",ale nie wyświetlono wszytkich (operacja przerwana) !!\n")
+        print(color_text("cyan","\nZnaleziono:"), len(records),
+              color_text("cyan", " rekordów."))
+        print(color_text("cyan","ale nie wyświetlono wszystkich (operacja przerwana) !!\n"))
     else:
-        print("Znaleziono:  ", len(records), " rekordów i wszystkie wyświetlono\n")  # jeśli wyświetlono wszystkie
-    input("Enter aby powrócic do menu.")  # input powstrzymujący przed przypadkowym kliknięciem entera
+        if len(records)==0:
+            print(color_text("red", "\nNie znaleziono żadnego dopasowania\n"))
+
+        else:
+            print(color_text("cyan", "\nZnaleziono:"), len(records),
+                  color_text("cyan", " rekordów i wszystkie wyświetlono\n"))  # jeśli wyświetlono wszystkie
+    input("Enter aby powrócic do menu.\n")  # input powstrzymujący przed przypadkowym kliknięciem entera
     # (duża ilość ekranów z danymi powoduje, że klikając szybko można rozwalić menu
 
 
@@ -153,5 +161,16 @@ def WyszukajOpis(param):
     return
 
 
-def WyszukajData():
+def WyszukajData(param):
+    """
+    Funkcja wyświetla rekordy , które spełniaa określona datę.Jęśli wpiszemy 2022-12 wyszuka wszyskie wpisy
+    z grudnia 2022, jęsli wpiszemy 2022-12-25 wszystkie wpisy z 15 grudnia 20, a jeśli 2022 to wszystkie wpisy z 2022 roku
+    :return:
+    """
+
+    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrażenia zawierającego string param
+
+    wyszukiwanie = f"SELECT * from Sejf where Data_utworzenia {szukane}"
+    wyroznienie = 6
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     pass

@@ -150,7 +150,20 @@ def WyswietlBaze():
                 wyswietlacz.WyszukajOpis(param)
                 WyswietlBaze()
             case "7":
-                wyswietlacz.WyszukajData()
+                control = True
+                while control:
+                    try:
+                        print("wpisanie:2022-12 wyświetli wszystkie wpisy dla grudnia 2022")
+                        param=input("Podaj datę(yyyy-mm-dd) powstania wpisu :\n")
+                        print()
+                        x = re.search(r"^([0-9]{4}((-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]))|(-(0[1-9]|1[0-2]))$))$", param)  # regex dla daty która zaweira rok i mniesiąc lub rok miesiać i dzien
+                        if x:
+                            control = False
+                        else:
+                            raise ZlaWarotsc()
+                    except ZlaWarotsc:
+                        print(color_text('red', 'Prawidłowy format wpisu to yyyy-mm  lub yyyy-mm-dd \n'))
+                wyswietlacz.WyszukajData(param)
                 WyswietlBaze()
             case "8":
                 mainBaza.Baza()
@@ -238,7 +251,7 @@ def MenuDodajWpis():
             return
 
     opis = input("Jeśli chcesz umieścic dodatkowy opis to tutaj:\n"
-                 "jeśli niechcesz opisu lub skończysz pisac nacisnij ENTER.")
+                 "jeśli nie chcesz opisu lub skończysz pisać naciśnij ENTER.")
 
     DodawanieWpisu(rodzaj_wpisu, login, haslo, adres, opis)
 
