@@ -9,6 +9,7 @@ Główny moduł programu.
 import sys
 from wyborOpcjiGeneratora import Wybor
 from mainBaza import Baza
+from koloruj import color_text
 
 
 class ZlaWarotsc(Exception):
@@ -24,7 +25,7 @@ def MenuGlowne():
         Główna pętla aplikacji
     """
     print("\n\n")
-    print("Dostępne opcje:")
+    print(color_text("green","Dostępne opcje:"))
     print("--" * 10)
     print("1 - Wygeneruj nowe hasło o podanych parametrach \n     na użytek bierzący")
     print("2 - Przejdź do menu zarządzania bazą danych\n     zgromadzonych haseł i loginów")
@@ -57,6 +58,6 @@ def MenuGlowne():
 
 
 print("--" * 50)
-print("Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D")
+print(color_text("yellow","Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
 print("--" * 50)
 MenuGlowne()

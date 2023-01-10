@@ -7,6 +7,7 @@ oraz moduł obsługujący wybory użytkownika, oraz ich walidację.
 
 """
 import mainBaza
+from koloruj import color_text
 
 
 def Menu_wyswietl():
@@ -15,7 +16,7 @@ def Menu_wyswietl():
     :return:
     """
 
-    print("Dostępne opcje Bazy Danych:")
+    print(color_text("yellow","Dostępne opcje Bazy Danych:"))
     print("--" * 10)
     print("1 - Dodaj nowy wpis do bazy zgromadzonych haseł i loginów")
     print("2 - Wyszukaj w bazie ")
@@ -31,8 +32,7 @@ def Menu_wyswietl2():
     Wyświetlanie Menu Bazy danych.
     :return:
     """
-
-    print("Dostępne opcje Wyświetlania:")
+    print(color_text("yellow", "Dostępne opcje Wyświetlania:"))
     print("--" * 10)
     print("1 - Wyświetl całą bazę danych ")
     print("2 - Szukaj w adresach www")
@@ -79,7 +79,7 @@ def Menu_wybor_opcji1():
             # print("wybrano 8")
             return wybor
         case other:
-            print("nie dokonano właściwego wyboru\n")
+            print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             Menu_wybor_opcji1()
     mainBaza.Baza()
 
@@ -104,5 +104,5 @@ def Menu_wybor_opcji():
             # print("wybrano 3")
             return wybor
         case other:
-            print("nie dokonano właściwego wyboru\n")
+            print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             mainBaza.Baza()

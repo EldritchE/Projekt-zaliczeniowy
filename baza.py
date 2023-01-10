@@ -13,6 +13,7 @@ import wyborOpcjiGeneratora
 from menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
 import wyswietlacz
 import re
+from koloruj import color_text
 
 
 class ZlaWarotsc(Exception):
@@ -31,7 +32,7 @@ def UtworzNowaBaze():
     if SprawdzenieCzyIsntniejeBaza():
         UtworzBaze()  # tu bedziemy tworzyć nową baze
     else:
-        UsunBaze()  # a tu będzie procedura upewniająca ze chcesz usunac starą bazę i tworząca kopie bezpieczeństwa starej bazy
+        UsunBaze()  # A tu będzie procedura upewniająca ze chcesz usunac starą bazę i tworząca kopie bezpieczeństwa starej bazy.
     mainBaza.Baza()
 
 
@@ -40,10 +41,10 @@ def SprawdzenieCzyIsntniejeBaza():
     Sprawdzanie, czy plik bazy danych już istnieje.
     :return:
     """
-    try:  # sprawdzanie czy baza już istnieje
+    try:  # sprawdzanie, czy baza już istnieje
         baza = open("baza_glowna.db", "r")
         baza.close()
-        return False  # zwraca false gdy baza istnieje
+        return False  # zwraca False, gdy baza istnieje
     except FileNotFoundError:
         return True  # jak bazy nie mam zwraca True
 
@@ -65,7 +66,8 @@ def UtworzBaze():
         Hasło varchar(40) NOT NULL, Adres varchar(250) NOT NULL, Data_utworzenia DATE NOT NULL, Dodatkowy_opis varchar(250))""")
 
     con.close()
-    print("Utworzono nową bazę danych ! \n")
+    print(color_text('green', 'Utworzono nową bazę danych ! \n'))
+
 
 
 def UsunBaze():
@@ -77,7 +79,7 @@ def UsunBaze():
     :return:
     """
     print("\n\n")
-    print("!!! UWAGA !!! baza juz istnieje !!!! ale ja skasujemy i utworzymy kopię bezpieczenstwa jeśli się upierasz.")
+    print(color_text('red', '!!! UWAGA !!! baza juz istnieje !!!! ale ja skasujemy i utworzymy kopię bezpieczenstwa jeśli się upierasz.'))
     print(
         "nadpisaną bazę znajdziesz w katalogu głównym aplikacji pod nazwą  ' zabezpieczenie_bazy + aktuany czas.db',\n ")
     print("\n\n")
@@ -91,11 +93,11 @@ def UsunBaze():
             # print("wirtualne nadpisanie opcja w celach testowych wylaczona")
 
             print()
-            print(" BAZA ZOSTAŁA NADPISANA !\n")
+            print(color_text('red', ' BAZA ZOSTAŁA NADPISANA !\n'))
             UtworzBaze()
         case "N":
             print("\n\n")
-            print("Ok ! Baza nie nadpisana!\n")
+            print(color_text('green', 'Ok ! Baza nie nadpisana!\n'))
 
             return
 
@@ -107,7 +109,7 @@ def WyswietlBaze():
     """
     wynik = SprawdzenieCzyIsntniejeBaza()
     if wynik:
-        print(" Baza nie istnieje, utwórz najpierw bazę!\n")
+        print(color_text('red', ' Baza nie istnieje, utwórz najpierw bazę!\n'))
         mainBaza.Baza()
     else:
 
@@ -115,7 +117,7 @@ def WyswietlBaze():
         wybor = Menu_wybor_opcji1()
         match wybor:
             case "1":
-                wyswietlacz.Cała()
+                wyswietlacz.Cala()
                 WyswietlBaze()
             case "2":
                 param = input("Wpisz jakiego serwisu WWW szukamy(Enter dla wszystkich wpisów WWW): ")
@@ -133,14 +135,14 @@ def WyswietlBaze():
                 while control:
                     try:
                         string = input("Wpisz jakiego loginu szukamy: ")
-                        x = re.search(r"^[a-zA-Z_\-]+$", string)  # regex dla ciągu z spacją
+                        x = re.search(r"^[a-zA-Z_\-]+$", string)  # regex dla ciągu ze spacją
                         if x:
-                            print("prawidłowy\n")
+                            print(color_text('green', 'prawidłowy\n'))
                             control = False
                         else:
                             raise ZlaWarotsc()
                     except ZlaWarotsc:
-                        print("Login posiada niedopuszczalny znak  podaj jeszcze raz: \n")
+                        print(color_text('red', 'Login posiada niedopuszczalny znak  podaj jeszcze raz: \n'))
                 wyswietlacz.WyszukajLogin(string)
                 WyswietlBaze()
             case "6":
@@ -153,7 +155,7 @@ def WyswietlBaze():
             case "8":
                 mainBaza.Baza()
             case other:
-                print("nie dokonano właściwego wyboru\n")
+                print(color_text('red', 'nie dokonano właściwego wyboru\n'))
                 return
 
         # mainBaza.Baza()
@@ -168,7 +170,8 @@ def MenuDodajWpis():
     'brak opisu' w pole opisu.
     :return:
     """
-    print("Dodawanie wpisu do bazy danych\n")
+    print(color_text("yellow", "Dodawanie wpisu do bazy danych\n"))
+
     rodzaj_wpisu = ""
     wybor = input("Jaki to rodzaj hasła ? \n"
                   "1-Strona WWW\n"
@@ -187,7 +190,7 @@ def MenuDodajWpis():
             rodzaj_wpisu = "Inne"
 
         case "4":
-            print("Przerwane !!\n")
+            print(color_text('red', 'przerwane !!\n'))
             mainBaza.Baza()
             return
 
@@ -229,7 +232,7 @@ def MenuDodajWpis():
             haslojawne = pyperclip.paste()
             haslo = Szyfrowanie(haslojawne, klucz)
         case "4":
-            print("przerwane !!\n")
+            print(color_text('red', 'przerwane !!\n'))
             mainBaza.Baza()
             return
 
@@ -283,5 +286,5 @@ def Wybory(wybor):
             return wybor
 
         case other:
-            print("nie dokonano właściwego wyboru\n")
+            print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             MenuDodajWpis()

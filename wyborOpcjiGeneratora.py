@@ -7,6 +7,7 @@ oraz zawierania co najmniej jednej cyfry
 
 from zapiszClipboard import dodajDoSchowka
 from generator import Generowanie
+from koloruj import color_text
 
 
 class ZlyWybor(Exception):
@@ -21,18 +22,21 @@ def Wybor_dlugosci_hasla():
 
     try:
         global dlugoscHasla
-        dlugoscHasla = 0
-        while dlugoscHasla == 0 or dlugoscHasla >= 41:
+        dlugoscHasla = 3
+        while dlugoscHasla == 3 or dlugoscHasla >= 41:
             dlugoscHasla = int(input(
-                "Tip :(hasło zawsze ma dozwolone małe i wielkie litery)\nPodaj długość żądanego hasła(max 40)  : "))  # wybór długości hasła
+                "Tip :(hasło zawsze ma dozwolone małe i wielkie litery)\nPodaj długość żądanego hasła(min 3 max 40)  : "))  # wybór długości hasła
 
             if dlugoscHasla >= 41:
-                print("Nie przesadzaj z tą długością hasła (dopuszczalna długość to 40 cyfr.\n")
+                print(color_text('red', 'Nie przesadzaj z tą długością hasła (dopuszczalna długość to 40 znaków.\n'))
+                Wybor_dlugosci_hasla()
+            if dlugoscHasla <4:
+                print(color_text('red', 'Nie przesadzaj z tą długością hasła (minimalna długość to 4 znaki.\n'))
 
+                Wybor_dlugosci_hasla()
 
     except ValueError:
-        print("podaj wartość liczbową!!\n")
-
+        print(color_text('red', 'podaj wartość liczbową!!\n'))
         Wybor_dlugosci_hasla()
 
     return dlugoscHasla
@@ -53,8 +57,8 @@ def Czy_specjalne():
             if czy_specjalne != "T" and czy_specjalne != "N":
                 raise ZlyWybor()
         except ZlyWybor:
-            print("Dokonano złego wyboru. Dostępne opcje to T/N")
 
+            print(color_text('red', 'Dokonano złego wyboru. Dostępne opcje to T/N'))
     match czy_specjalne:
         case "T":
             znaki_specjalne = True
@@ -81,7 +85,8 @@ def Czy_zawiera_liczbe():
             if czy_liczba != "T" and czy_liczba != "N":
                 raise ZlyWybor()
         except ZlyWybor:
-            print("Dokonano złego wyboru. Dostępne opcje to T/N")
+            print(color_text('red', 'Dokonano złego wyboru. Dostępne opcje to T/N'))
+
 
     match czy_liczba:
         case "T":
@@ -128,5 +133,5 @@ def Wybor():
     haslo = Generowanie(dlugosc_hasla, znaki_specjalne, zawiera_liczbe)
 
     dodajDoSchowka(haslo)
-    print(f"Wygenerowane hasło to : '{haslo}' \n Spokojnie masz już je załadowane do schowka systemowego ;)\n")
+    print(f"Wygenerowane hasło to : '{color_text('magenta', haslo)}' \n Spokojnie masz już je załadowane do schowka systemowego ;)\n******************************\n")
     return

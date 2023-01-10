@@ -7,7 +7,7 @@ from szyfrowanie import Deszyfruj, Szyfrowanie
 from koloruj import color_text
 
 
-def WyświetlZadane(wyszukiwanie, wyroznienie=0):
+def WyswietlZadane(wyszukiwanie, wyroznienie=0):
     """
         Procedura wydruku wyszkiwanych danych ze zdefiniowanymi parametrami.
         :param wyszukiwanie:
@@ -79,7 +79,7 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
 
     con.commit()  # wykonanie
     con.close()  # zamknięcie bazy
-    if przerwana:  # komunikat jeśli przerwano wyświetlanie rekordów
+    if przerwana:  # komunikat, jeśli przerwano wyświetlanie rekordów
         print("\nZnaleziono:  ", len(records),
               " rekordów.")
         print(",ale nie wyświetlono wszytkich (operacja przerwana) !!\n")
@@ -89,11 +89,11 @@ def WyświetlZadane(wyszukiwanie, wyroznienie=0):
     # (duża ilość ekranów z danymi powoduje, że klikając szybko można rozwalić menu
 
 
-def Cała():
+def Cala():
     """Funkcja pobiera i wyświetla dane z całej bazy."""
     wyszukiwanie = "SELECT * from Sejf "
     wyroznienie = 0
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
@@ -102,11 +102,11 @@ def WyszukajWWW(param):
     if param == "":  # param to zmienna przekazująca szukany ciąg
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW'"
 
-    else:
-        szukane = f"LIKE '%{param}%'"
-        wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW' AND Adres='{param}'"
+
+    szukane1 = f"LIKE '%{param}%'"
+    wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW' AND Adres {szukane1}"
     wyroznienie = 5
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
@@ -118,7 +118,7 @@ def WyszukajMail(param):
     else:
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa Email' AND Adres='{param}'"
     wyroznienie = 4
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
@@ -126,30 +126,30 @@ def WyszukajNieokreslone():
     """Funkcja pobiera i wyświetla dane dla serwisów nieokreślonych."""
     wyszukiwanie = "SELECT * from Sejf where Rodzaj_hasła='Inne'"
     wyroznienie = 1
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
 def WyszukajLogin(string):
     """Funkcja pobiera i wyświetla dane dla podanego loginu."""
     szukane = f"LIKE '%{Szyfrowanie(string)}%'"  ##maska na szukanie wyrazęnia zawierającego string
-    # i mponowne szyfrowanie celem znalezienia loginu (baza jest zaszyfrowana w tym polu
+    # i ponowne szyfrowanie celem znalezienia loginu (baza jest zaszyfrowana w tym polu)
     wyszukiwanie = f"SELECT * from Sejf where Login {szukane} "
 
     wyroznienie = 2
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
 def WyszukajOpis(param):
     """Funkcja pobiera i wyświetla dane dla podanego słowa z opisu."""
 
-    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrazęnia zawierającego string param
+    szukane = f"LIKE '%{param}%'"  # maska na szukanie wyrażenia zawierającego string param
 
     wyszukiwanie = f"SELECT * from Sejf where Dodatkowy_opis {szukane}"
 
     wyroznienie = 3
-    WyświetlZadane(wyszukiwanie, wyroznienie)
+    WyswietlZadane(wyszukiwanie, wyroznienie)
     return
 
 
