@@ -15,7 +15,7 @@ def Menu_wyswietl():
     Wyświetlanie Menu Bazy danych.
     :return:
     """
-
+    print(color_text("blue", "Baza Danych"))
     print(color_text("yellow","Dostępne opcje Bazy Danych:"))
     print("--" * 10)
     print("1 - Dodaj nowy wpis do bazy zgromadzonych haseł i loginów")
@@ -32,6 +32,7 @@ def Menu_wyswietl2():
     Wyświetlanie Menu Bazy danych.
     :return:
     """
+    print(color_text("blue", "Baza Danych"))
     print(color_text("yellow", "Dostępne opcje Wyświetlania:"))
     print("--" * 10)
     print("1 - Wyświetl całą bazę danych ")
@@ -101,7 +102,7 @@ def Menu_wybor_opcji():
             # print("wybrano 3")
             return wybor
         case "4":
-            # print("wybrano 3")
+            # print("wybrano 4")
             return wybor
         case other:
             print(color_text('red', 'nie dokonano właściwego wyboru\n'))

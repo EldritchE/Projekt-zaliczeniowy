@@ -170,6 +170,7 @@ def MenuDodajWpis():
     'brak opisu' w pole opisu.
     :return:
     """
+    print(color_text("blue", "Baza Danych"))
     print(color_text("yellow", "Dodawanie wpisu do bazy danych\n"))
 
     rodzaj_wpisu = ""

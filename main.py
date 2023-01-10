@@ -25,6 +25,7 @@ def MenuGlowne():
         Główna pętla aplikacji
     """
     print("\n\n")
+    print(color_text("blue", "Menu główne"))
     print(color_text("green","Dostępne opcje:"))
     print("--" * 10)
     print("1 - Wygeneruj nowe hasło o podanych parametrach \n     na użytek bierzący")
