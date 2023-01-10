@@ -30,7 +30,7 @@ def MenuGlowne():
     print("--" * 10)
     print("1 - Wygeneruj nowe hasło o podanych parametrach \n     na użytek bierzący")
     print("2 - Przejdź do menu zarządzania bazą danych\n     zgromadzonych haseł i loginów")
-    print("3 - trzecia opcja narazie też nieznana")
+    print("3 - Ustaw - zresetuj hasło główne")
     print("4 - Zakończ działanie programu")
     print("\n\n")
     wybor = 0
