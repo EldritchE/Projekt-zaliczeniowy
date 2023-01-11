@@ -69,7 +69,6 @@ def UtworzBaze():
     print(color_text('green', 'Utworzono nową bazę danych ! \n'))
 
 
-
 def UsunBaze():
     """
     Funkcja usuwająca bazę danych na żądanie użytkownika
@@ -79,7 +78,8 @@ def UsunBaze():
     :return:
     """
     print("\n\n")
-    print(color_text('red', '!!! UWAGA !!! baza juz istnieje !!!! ale ja skasujemy i utworzymy kopię bezpieczenstwa jeśli się upierasz.'))
+    print(color_text('red',
+                     '!!! UWAGA !!! baza juz istnieje !!!! ale ja skasujemy i utworzymy kopię bezpieczenstwa jeśli się upierasz.'))
     print(
         "nadpisaną bazę znajdziesz w katalogu głównym aplikacji pod nazwą  ' zabezpieczenie_bazy + aktuany czas.db',\n ")
     print("\n\n")
@@ -131,7 +131,7 @@ def WyswietlBaze():
                 wyswietlacz.WyszukajNieokreslone()
                 WyswietlBaze()
             case "5":
-                control = True  #sprawdzenie, czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu.
+                control = True  # sprawdzenie, czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu.
                 while control:
                     try:
                         string = input("Wpisz jakiego loginu szukamy: ")
@@ -154,9 +154,11 @@ def WyswietlBaze():
                 while control:
                     try:
                         print("wpisanie:2022-12 wyświetli wszystkie wpisy dla grudnia 2022")
-                        param=input("Podaj datę(yyyy-mm-dd) powstania wpisu :\n")
+                        param = input("Podaj datę(yyyy-mm-dd) powstania wpisu :\n")
                         print()
-                        x = re.search(r"^([0-9]{4}((-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]))|(-(0[1-9]|1[0-2]))$))$", param)  # regex dla daty która zaweira rok i mniesiąc lub rok miesiać i dzien
+                        x = re.search(
+                            r"^([0-9]{4}((-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]))|(-(0[1-9]|1[0-2]))$))$",
+                            param)  # regex dla daty która zaweira rok i mniesiąc lub rok miesiać i dzien
                         if x:
                             control = False
                         else:
@@ -207,7 +209,6 @@ def MenuDodajWpis():
             print(color_text('red', 'przerwane !!\n'))
             mainBaza.Baza()
             return
-
 
     match rodzaj_wpisu:
         case ("Usługa WWW"):  # zalezności od wyboru rodzaju wpis ( czy strona www czy email czy haslojawne typu inne odpowiedni wybór dla pola adres
@@ -274,8 +275,8 @@ def DodawanieWpisu(rodzaj_wpisu, login, haslo, adres, opis):
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     cur.execute('INSERT INTO Sejf VALUES(NULL, ?, ?, ?, ?, ?, ?);', (rodzaj_wpisu, login, haslo, adres, data, opis))
-    con.commit()    #wykonanie
-    con.close()     #zamknięcie bazy
+    con.commit()  # wykonanie
+    con.close()  # zamknięcie bazy
 
 
 def Wybory(wybor):

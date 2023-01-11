@@ -4,7 +4,6 @@ Moduł odpowiedzialny za utworzenie menu głównego
 
 """
 
-
 # def Menu_wyswietl():
 #     """
 #     Fyunkcja wyświetlania opcji Menu Głównego:

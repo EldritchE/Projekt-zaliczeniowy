@@ -12,7 +12,6 @@ from menuBaza import Menu_wyswietl, Menu_wybor_opcji
 from baza import UtworzNowaBaze, WyswietlBaze, MenuDodajWpis
 
 
-
 def Baza():
     """
     Wyświetlanie menu bazy danych z modułu 'menuBaza' funkcją Menu_Wyświetl

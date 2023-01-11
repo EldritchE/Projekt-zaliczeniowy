@@ -12,10 +12,12 @@ window.setWindowTitle("Możliwości GUI")
 label = QLabel("Witaj w oknie GUI!", window)
 label.move(50, 50)
 
+
 # Utwórz przycisk
 def klik():
-  print("Kliknięto przycisk!")
-  label = QLabel("KLIKNIETO!!!", window)
+    print("Kliknięto przycisk!")
+    label = QLabel("KLIKNIETO!!!", window)
+
 
 button = QPushButton("Kliknij mnie", window)
 button.move(50, 100)

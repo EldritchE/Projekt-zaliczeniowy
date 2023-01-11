@@ -30,7 +30,7 @@ def Wybor_dlugosci_hasla():
             if dlugoscHasla >= 41:
                 print(color_text('red', 'Nie przesadzaj z tą długością hasła (dopuszczalna długość to 40 znaków.\n'))
                 Wybor_dlugosci_hasla()
-            if dlugoscHasla <4:
+            if dlugoscHasla < 4:
                 print(color_text('red', 'Nie przesadzaj z tą długością hasła (minimalna długość to 4 znaki.\n'))
 
                 Wybor_dlugosci_hasla()
@@ -87,7 +87,6 @@ def Czy_zawiera_liczbe():
         except ZlyWybor:
             print(color_text('red', 'Dokonano złego wyboru. Dostępne opcje to T/N'))
 
-
     match czy_liczba:
         case "T":
             zawiera_liczbe = True
@@ -133,5 +132,6 @@ def Wybor():
     haslo = Generowanie(dlugosc_hasla, znaki_specjalne, zawiera_liczbe)
 
     dodajDoSchowka(haslo)
-    print(f"Wygenerowane hasło to : '{color_text('magenta', haslo)}' \n Spokojnie masz już je załadowane do schowka systemowego ;)\n******************************\n")
+    print(
+        f"Wygenerowane hasło to : '{color_text('magenta', haslo)}' \n Spokojnie masz już je załadowane do schowka systemowego ;)\n******************************\n")
     return

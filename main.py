@@ -15,26 +15,28 @@ from szyfrowanie import Deszyfruj
 from masterPass import pobierzHaslo
 
 
-
 class ZlaWarotsc(Exception):
     pass
 
 
 class StringZamiastInt(Exception):
     pass
+
+
 def Wejscie(licznik):
     if licznik == 0:
-        print (color_text("red","Nie znasz Hasła! Do widzenia!"))
+        print(color_text("red", "Nie znasz Hasła! Do widzenia!"))
         exit()
-    pobpswd=pobierzHaslo()
-    pswd=input(color_text("blue","Wprowdadź hasło główne:\n"))
-    if pobpswd==pswd:
+    pobpswd = pobierzHaslo()
+    pswd = input(color_text("blue", "Wprowdadź hasło główne:\n"))
+    if pobpswd == pswd:
         MenuGlowne()
     else:
-        print(color_text("red","Hasło nieprawidłowe! pozostło "),licznik-1,color_text("red","prób\n"))
-        licznik-=1
+        print(color_text("red", "Hasło nieprawidłowe! pozostło "), licznik - 1, color_text("red", "prób\n"))
+        licznik -= 1
         Wejscie(licznik)
     return
+
 
 def MenuGlowne():
     """
@@ -42,7 +44,7 @@ def MenuGlowne():
     """
     print("\n\n")
     print(color_text("blue", "Menu główne"))
-    print(color_text("green","Dostępne opcje:"))
+    print(color_text("green", "Dostępne opcje:"))
     print("--" * 10)
     print("1 - Wygeneruj nowe hasło o podanych parametrach \n     na użytek bierzący")
     print("2 - Przejdź do menu zarządzania bazą danych\n     zgromadzonych haseł i loginów")
@@ -70,15 +72,14 @@ def MenuGlowne():
             masterPass.mPassword()
             MenuGlowne()
         case 4:
-            print(color_text("blue","Dziękuję za skorzystanie z programu ! Do widzenia !!\n\nEldritch."))
+            print(color_text("blue", "Dziękuję za skorzystanie z programu ! Do widzenia !!\n\nEldritch."))
             exit()
         case other:
             MenuGlowne()
 
 
-print(color_text("yellow","Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
+print(color_text("yellow",
+                 "Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
 print("--" * 50)
-licznik=3
+licznik = 3
 Wejscie(licznik)
-
-

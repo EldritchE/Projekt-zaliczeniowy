@@ -83,11 +83,11 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
     con.commit()  # wykonanie
     con.close()  # zamknięcie bazy
     if przerwana:  # komunikat, jeśli przerwano wyświetlanie rekordów
-        print(color_text("cyan","\nZnaleziono:"), len(records),
+        print(color_text("cyan", "\nZnaleziono:"), len(records),
               color_text("cyan", " rekordów."))
-        print(color_text("cyan","ale nie wyświetlono wszystkich (operacja przerwana) !!\n"))
+        print(color_text("cyan", "ale nie wyświetlono wszystkich (operacja przerwana) !!\n"))
     else:
-        if len(records)==0:
+        if len(records) == 0:
             print(color_text("red", "\nNie znaleziono żadnego dopasowania\n"))
 
         else:
@@ -109,7 +109,6 @@ def WyszukajWWW(param):
     """Funkcja pobiera i wyświetla dane dla serwisów WWW."""
     if param == "":  # param to zmienna przekazująca szukany ciąg
         wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW'"
-
 
     szukane1 = f"LIKE '%{param}%'"
     wyszukiwanie = f"SELECT * from Sejf where Rodzaj_hasła= 'Usługa WWW' AND Adres {szukane1}"

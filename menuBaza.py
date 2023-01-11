@@ -16,7 +16,7 @@ def Menu_wyswietl():
     :return:
     """
     print(color_text("blue", "Baza Danych"))
-    print(color_text("yellow","Dostępne opcje Bazy Danych:"))
+    print(color_text("yellow", "Dostępne opcje Bazy Danych:"))
     print("--" * 10)
     print("1 - Dodaj nowy wpis do bazy zgromadzonych haseł i loginów")
     print("2 - Wyszukaj w bazie ")
