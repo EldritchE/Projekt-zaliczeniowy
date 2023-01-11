@@ -27,7 +27,7 @@ def SprawdzWWW():
     control = True
     while control:
         try:
-            string = input("Podaj adres WWW :")
+            string = input("Podaj adres WWW :(postać :'nazwa.com')")
             string = string.lower()
             x = re.search(r"^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$",
                           string)  # regex dla ciągu bedącego adresem WWW
@@ -46,7 +46,7 @@ def SprawdzLogin():  # sprawdzanie czy login nie ma baiłych znaków
     while control:
         try:
             string = input("Login :")
-            x = re.search(r"^[a-zA-Z_\-]+$", string)  # regex dla ciągu z spacją
+            x = re.search(r"^[a-zA-Z0-9_\-]+$", string)  # regex dla ciągu ze spacją
             if x:
                 print("prawidłowy\n")
                 control = False

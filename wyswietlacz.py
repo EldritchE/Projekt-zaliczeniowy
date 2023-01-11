@@ -33,7 +33,7 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
         if wyroznienie == 1:
             print('-' * 36)
 
-        print("Rodzaj Hasła: ", color_text('red', row[1]))
+        print("Usługa: ", color_text('red', row[1]))
         if wyroznienie == 1:
             print('-' * 36)
         if wyroznienie == 2:

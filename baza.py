@@ -187,7 +187,7 @@ def MenuDodajWpis():
     print(color_text("yellow", "Dodawanie wpisu do bazy danych\n"))
 
     rodzaj_wpisu = ""
-    wybor = input("Jaki to rodzaj hasła ? \n"
+    wybor = input("Jaka to usługa ? \n"
                   "1-Strona WWW\n"
                   "2-Usługa Email\n"
                   "3-Inne hasło\n"
