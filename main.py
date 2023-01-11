@@ -53,7 +53,10 @@ def MenuGlowne():
             MenuGlowne()
         case 3:
             masterPass.mPassword()
-            sys.exit()
+            MenuGlowne()
+        case 4:
+            print(color_text("blue","Dziękuję za skorzystanie z programu ! Do widzenia !!\n\nEldritch."))
+            exit()
         case other:
             MenuGlowne()
 
