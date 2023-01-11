@@ -11,6 +11,9 @@ from wyborOpcjiGeneratora import Wybor
 from mainBaza import Baza
 from koloruj import color_text
 import masterPass
+from szyfrowanie import Deszyfruj
+from masterPass import pobierzHaslo
+
 
 
 class ZlaWarotsc(Exception):
@@ -19,7 +22,19 @@ class ZlaWarotsc(Exception):
 
 class StringZamiastInt(Exception):
     pass
-
+def Wejscie(licznik):
+    if licznik == 0:
+        print (color_text("red","Nie znasz Hasła! Do widzenia!"))
+        exit()
+    pobpswd=pobierzHaslo()
+    pswd=input(color_text("blue","Wprowdadź hasło główne:\n"))
+    if pobpswd==pswd:
+        MenuGlowne()
+    else:
+        print(color_text("red","Hasło nieprawidłowe! pozostło "),licznik-1,color_text("red","prób\n"))
+        licznik-=1
+        Wejscie(licznik)
+    return
 
 def MenuGlowne():
     """
@@ -61,7 +76,9 @@ def MenuGlowne():
             MenuGlowne()
 
 
-print("--" * 50)
 print(color_text("yellow","Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
 print("--" * 50)
-MenuGlowne()
+licznik=3
+Wejscie(licznik)
+
+

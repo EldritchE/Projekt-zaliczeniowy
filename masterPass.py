@@ -18,6 +18,18 @@ class ZlaWarotsc(Exception):
 class StringZamiastInt(Exception):
     pass
 
+def pobierzHaslo():
+    con = sqlite3.connect("p.db")
+    con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
+    cur = con.cursor()
+    wyszukiwanie = """SELECT * From Mpassword WHERE Haslo not null"""
+    sqlite_select_query = wyszukiwanie
+    cur.execute(sqlite_select_query)
+    records = cur.fetchall()
+    for oldpswdszyfr in records:
+        oldpswdbaza = (Deszyfruj(oldpswdszyfr[1]))
+    return oldpswdbaza
+
 def sprawdzCzyZnaszHaslo():
     oldpswd= input("Hasło: ")
     con = sqlite3.connect("p.db")
