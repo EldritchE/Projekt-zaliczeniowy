@@ -14,7 +14,7 @@ Postawowa funkcjonalność:
   (minimalna długość hasła = 4 znaki,maksymalna długość generowanego hasła przyjęto na 40 znaków, z założenia aplikacja
   używa małych i wielkich liter z automatu nie pytając o to użytkownika.
     -     Dodatkowo, po utworzeniu oczekiwanego hasła, aplikacja z automatu zapisuje hasło w schowku systemowym,
-          o czym informuje, do wykorzystania w samej aplikacji, jak również po za nią, w intuicyjny sposób \n w jaki korzysta 
+          o czym informuje, do wykorzystania w samej aplikacji, jak również po za nią, w intuicyjny sposób w jaki korzysta 
           się ze skrótu klawiszowego ctrl+V, lub menu kontekstowego myszki.
 - Opcje Bazy Danych gromadzącej utworzone hasła do róznego rodzaju serwisów i usług, gdzie wymagane są login i hasło.
 
