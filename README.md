@@ -19,4 +19,5 @@ Postawowa funkcjonalność:
 - Opcje Bazy Danych gromadzącej utworzone hasła do róznego rodzaju serwisów i usług, gdzie wymagane są login i hasło.
 
     Menu zarządzania bazą danych: 
-    -     1 dodanie wpisu do bazy danych:  umozliwia stworzenie nowego wpisu serwis-login- 
+    -     Dodanie wpisu do bazy danych:  umozliwia stworzenie nowego wpisu serwis-login-hasło (możliwość wpisania                           hasła samemu, lub wykorzystanie modułu go generowania)
+    -      
