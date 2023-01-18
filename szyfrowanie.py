@@ -1,6 +1,6 @@
 """
-Moduł szyfrowanie Szyfrem Cezara o  kluczu 26
-Moduł stworzony przeze mnie na potrzeby inmnych zajęć, funkcje zbędne do
+Moduł szyfrowanie Szyfrem Cezara o kluczu 26.
+Moduł stworzony przeze mnie na potrzeby innych zajęć, funkcje zbędne do
 prawidłowego działania w aplikacji hasła, zostały zakomentowane.
 
 """

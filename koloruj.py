@@ -7,11 +7,4 @@ def color_text(color, text):
     else:
         return colors[color] + text + '\033[0m'
 
-# print(color_text('red', 'Hello, World!')):
-# print(color_text('green', 'Hello, World!'))
-# print(color_text('yellow', 'Hello, World!'))
-# print(color_text('blue', 'Hello, World!'))
-# print(color_text('magenta', 'Hello, World!'))
-# print(color_text('cyan', 'Hello, World!'))
-# print(color_text('white', 'Hello, World!'))
-# print(color_text('black', 'Hello, World!'))
+
