@@ -32,7 +32,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
                 1) wyświetlanie zawartości całej bazy dnaych
                 2) szukanie wpisów po zadanym adresie www
                 3) szukanie po zadanym adresie email
-                4) szukanie po wpisach nieokreślonych
+                4) szukanie wpisów o nieokreślonym rodzaju serwisu
                 5) szukanie po loginie
                 6) szukanie po opisie
                 7) szukanie po dacie utworzenia (wpisanie tylko rou i miesiąca, wyświetla wpisy z danego miesiąca)
