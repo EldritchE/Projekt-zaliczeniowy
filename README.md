@@ -63,7 +63,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
   -
  - hasło startowe '_1111_'
  - odpowiedz na 1 pytanie sprawdzające przy zmianie hasła '_ja_'
- - odpowiedz na 1 pytanie sprawdzające przy zmianie hasła '_tak_'
+ - odpowiedz na 2 pytanie sprawdzające przy zmianie hasła '_tak_'
  - załączona baza danych z przykładowymi wpisami
  - dane do logowania do repozytorium GiHub do projektu : user :EldritchE   pass: eY@M973uAMzcTGMAhd@$
  - Dostęp do repozytorium przewidziano do 20 lutego 2023, 
