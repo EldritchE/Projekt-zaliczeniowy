@@ -9,7 +9,7 @@ realizuje odwołania do poszczególnych działań na Bazie
 
 """
 from menuBaza import Menu_wyswietl, Menu_wybor_opcji
-from baza import UtworzNowaBaze, WyswietlBaze, MenuDodajWpis
+from baza import UtworzNowaBaze, WyswietlBaze, MenuDodajWpis,SkasujWpisMenu
 
 
 def Baza():
@@ -25,8 +25,11 @@ def Baza():
         case "1":
             MenuDodajWpis()
         case "2":
-            WyswietlBaze()
+            SkasujWpisMenu()
         case "3":
-            UtworzNowaBaze()
+            wywolanie = 1
+            WyswietlBaze(wywolanie)
         case "4":
+            UtworzNowaBaze()
+        case "5":
             pass

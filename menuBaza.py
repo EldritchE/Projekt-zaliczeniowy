@@ -10,6 +10,7 @@ import mainBaza
 from koloruj import color_text
 
 
+
 def Menu_wyswietl():
     """
     Wyświetlanie Menu Bazy danych.
@@ -19,9 +20,10 @@ def Menu_wyswietl():
     print(color_text("yellow", "Dostępne opcje Bazy Danych:"))
     print("--" * 10)
     print("1 - Dodaj nowy wpis do bazy zgromadzonych haseł i loginów")
-    print("2 - Wyszukaj w bazie ")
-    print("3 - Utwórz nową bazę danych (!!!)\n    ----!!!UAWAGA! w opcji 3 ryzyko nadpisania poprzedniej bazy!!!----")
-    print("4 - Wróć do Menu głównego")
+    print("2 - Usuń wpis do bazy zgromadzonych haseł i loginów")
+    print("3 - Wyszukaj w bazie ")
+    print("4 - Utwórz nową bazę danych (!!!)\n    ----!!!UAWAGA! w opcji 3 ryzyko nadpisania poprzedniej bazy!!!----")
+    print("5 - Wróć do Menu głównego")
     print("\n\n")
 
     return
@@ -46,6 +48,7 @@ def Menu_wyswietl2():
     print("\n\n")
 
     return
+
 
 
 def Menu_wybor_opcji1():
@@ -103,6 +106,9 @@ def Menu_wybor_opcji():
             return wybor
         case "4":
             # print("wybrano 4")
+            return wybor
+        case "5":
+            # print("wybrano 5")
             return wybor
         case other:
             print(color_text('red', 'nie dokonano właściwego wyboru\n'))

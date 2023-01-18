@@ -27,7 +27,7 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
 
         if wyroznienie == 0:
             print('-' * 36)
-        print("Znaleziony: ", row[0])
+        print("ID: ", row[0])
         if wyroznienie == 0:
             print('-' * 36)
         if wyroznienie == 1:
@@ -172,4 +172,4 @@ def WyszukajData(param):
     wyszukiwanie = f"SELECT * from Sejf where Data_utworzenia {szukane}"
     wyroznienie = 6
     WyswietlZadane(wyszukiwanie, wyroznienie)
-    pass
+    return

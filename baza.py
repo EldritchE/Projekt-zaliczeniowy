@@ -20,7 +20,40 @@ from koloruj import color_text
 
 class ZlaWarotsc(Exception):
     pass
+def Menu_wybor_opcji_kasowanie():
+    """
+    Funkcja realizująca wybory użytkownika z walidacją tych wyborów.
+        :return:
+    """
+    wybor = input("Dokonaj wyboru(1,2 lub 3)")
+    match wybor:
+        case "1":
+            # print("wybrano 1")
+            return wybor
+        case "2":
+            # print("wybrano 2")
+            return wybor
+        case "3":
+            # print("wybrano 3")
+            return wybor
+        case other:
+            print(color_text('red', 'nie dokonano właściwego wyboru\n'))
+            Menu_wybor_opcji_kasowanie()
 
+def Menu_wyswietl_kasowanie():
+    """
+    Wyświetlanie Menu kasowania wpisu.
+    :return:
+    """
+    print(color_text("blue", "Baza Danych"))
+    print(color_text("yellow", "Dostępne opcje Kasowania wpisu:"))
+    print("--" * 10)
+    print("1 - Skasuj wpis po znanym ID")
+    print("2 - Wyszukaj wpis do skasowania ")
+    print("3 - Wróć do Menu Bazy danych ")
+    print("\n\n")
+
+    return
 
 def UtworzNowaBaze():
     """
@@ -103,8 +136,18 @@ def UsunBaze():
 
             return
 
-
-def WyswietlBaze():
+def Powrot(wywolanie):
+    """
+    # warunek powrotu do poprzedniej funkcji w zależności skąd została wywołana 1 Głowne menu Bazy
+    # 2 z menu kasowania wpisu powtórzone przy każdym case
+    :param wywolanie:
+    :return:
+    """
+    if wywolanie == 1:
+        WyswietlBaze(0)
+    else:
+        SkasujWpisMenu()
+def WyswietlBaze(wywolanie):
     """
     Funkcja realizująca wyświetlanie rekordów bazy danych.
     :return:
@@ -120,18 +163,18 @@ def WyswietlBaze():
         match wybor:
             case "1":
                 wyswietlacz.Cala()
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "2":
                 param = input("Wpisz jakiego serwisu WWW szukamy(Enter dla wszystkich wpisów WWW): ")
                 wyswietlacz.WyszukajWWW(param)
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "3":
                 param = input("Wpisz jakiego serwisu Email szukamy(Enter dla wszystkich wpisów Email): ")
                 wyswietlacz.WyszukajMail(param)
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "4":
                 wyswietlacz.WyszukajNieokreslone()
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "5":
                 control = True  # sprawdzenie, czy login może być w bazie. Walidacja taka sama jak przy wpisywaniu.
                 while control:
@@ -146,11 +189,11 @@ def WyswietlBaze():
                     except ZlaWarotsc:
                         print(color_text('red', 'Login posiada niedopuszczalny znak  podaj jeszcze raz: \n'))
                 wyswietlacz.WyszukajLogin(string)
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "6":
                 param = input("Jakiego wyrażenia szukamy w opisie: ")
                 wyswietlacz.WyszukajOpis(param)
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "7":
                 control = True
                 while control:
@@ -168,13 +211,13 @@ def WyswietlBaze():
                     except ZlaWarotsc:
                         print(color_text('red', 'Prawidłowy format wpisu to yyyy-mm  lub yyyy-mm-dd \n'))
                 wyswietlacz.WyszukajData(param)
-                WyswietlBaze()
+                Powrot(wywolanie)
             case "8":
                 mainBaza.Baza()
             case other:
                 print(color_text('red', 'nie dokonano właściwego wyboru\n'))
                 return
-
+    return
         # mainBaza.Baza()
 
 
@@ -305,3 +348,53 @@ def Wybory(wybor):
         case other:
             print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             MenuDodajWpis()
+def SkasujWpisMenu():
+
+    Menu_wyswietl_kasowanie()
+    wybor=Menu_wybor_opcji_kasowanie()
+    match wybor:
+        case "1":
+            kasowane=input ("Podaj ID kasowanego wpisu :\n")
+            con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
+            cur = con.cursor()
+            wyszukiwanie = f"SELECT * from Sejf where id= {kasowane}"
+
+            sqlite_select_query = wyszukiwanie
+            cur.execute(sqlite_select_query)
+            records = cur.fetchall()
+            for row in records:
+                print(color_text('red',"Wpis do skasowania !"))
+                print('-' * 36)
+                print("ID: ", row[0])
+                print('-' * 36)
+                print("Usługa: ", color_text('red', row[1]))
+                print("Login: ", color_text('green', Deszyfruj(row[2])))
+                print("Hasło: ", color_text('magenta', Deszyfruj(row[3])))
+                print("Adres usługi: ", color_text('yellow', row[4]))
+                print("Data utworzenia: ", row[5])
+                print("Dodatkowy opis: ", color_text('blue', row[6]))
+                print(color_text('red',"-------------------------------------------"))
+                print(color_text('red',"Czy jesteś pewien,że chcesz to usunąć ? !!"))
+                print(color_text('red', "------------------------------------------"))
+                print("\n\n")
+
+                decyzja = input("T/N").upper()
+                if decyzja== "N":
+                    SkasujWpisMenu()
+                elif decyzja == "T":
+                    print("tu bedziemy kasować")
+                    kasowany= f"DELETE FROM Sejf WHERE id={kasowane}"
+                    cur.execute(kasowany)
+                    con.commit()  # wykonanie
+                    con.close()  # zamknięcie bazy
+                else:
+                    print(color_text('red',"Zły wybór !"))
+            SkasujWpisMenu()
+
+        case "2":
+            wywolanie = 2
+            WyswietlBaze(wywolanie)
+
+
+
+
