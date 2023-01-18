@@ -362,6 +362,8 @@ def SkasujWpisMenu():
             sqlite_select_query = wyszukiwanie
             cur.execute(sqlite_select_query)
             records = cur.fetchall()
+            if records ==[]:
+                print("\n",color_text('red',"Nie ma wpisu o takim ID, nic nie zostanie skasowane!\n "))
             for row in records:
                 print(color_text('red',"Wpis do skasowania !"))
                 print('-' * 36)
@@ -378,12 +380,16 @@ def SkasujWpisMenu():
                 print(color_text('red', "------------------------------------------"))
                 print("\n\n")
 
-                decyzja = input("T/N").upper()
+                decyzja = input("T/N\n").upper()
                 if decyzja== "N":
+                    print("\n")
+                    print(color_text('green',"Wpis nie został Usunięty !\n"))
                     SkasujWpisMenu()
                 elif decyzja == "T":
-                    print("tu bedziemy kasować")
+                    print("\n")
                     kasowany= f"DELETE FROM Sejf WHERE id={kasowane}"
+                    print (f"Wpis o ID = {kasowane}")
+                    print(color_text('red',"Został bezpowrotnie usuniety!\n\n"))
                     cur.execute(kasowany)
                     con.commit()  # wykonanie
                     con.close()  # zamknięcie bazy
