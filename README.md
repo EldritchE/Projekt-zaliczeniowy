@@ -25,7 +25,11 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
     -       jeśli baza danych haseł nie istnieje, uzytkownik z automatu jest przenoszony do opcji tworzenia bazy danych
 
   
-  - **Dodanie wpisu** do bazy danych:  umozliwia stworzenie nowego wpisu serwis-login-hasło-opis
+  - **Dodanie wpisu** do bazy danych:
+    -      umożliwia stworzenie nowego wpisu serwis-login-hasło-opis
+  - **Usunięcie wpisu** z bazy danych:  
+    -      umożliwia usunięcie dowolnego wpisu z bazy danych po podaniu ID wpisu. Z tego menu istnieje wejscie
+           do menu przeszukiwania, celem odnalezienia ID
   - **Wyszukiwanie informacji** w bazie danych 
   
   
