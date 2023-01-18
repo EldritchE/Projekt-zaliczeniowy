@@ -59,3 +59,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
   -
  - hasło startowe '1111'
  - załączona baza danych z przykładowymi wpisami
+ - dane do logowania do repozytorium GiHub do projektu : user :EldritchE   pass: eY@M973uAMzcTGMAhd@$
+ - Dostęp do repozytorium przewidziano do 20 lutego 2023, 
+ - Projekt powstał w dwóch repozytoriach, ze względu na awarię pierwszego
+ - zostało utworzone drugie :)
