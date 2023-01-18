@@ -13,7 +13,11 @@ from koloruj import color_text
 import masterPass
 from szyfrowanie import Deszyfruj
 from masterPass import pobierzHaslo
+import os
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
+# now, to clear the screen
 
 class ZlaWarotsc(Exception):
     pass
@@ -26,6 +30,7 @@ class StringZamiastInt(Exception):
 def Wejscie(licznik):
     if licznik == 0:
         print(color_text("red", "Nie znasz Hasła! Do widzenia!"))
+        cls()
         exit()
     pobpswd = pobierzHaslo()
     pswd = input(color_text("blue", "Wprowdadź hasło główne:\n"))
