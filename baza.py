@@ -3,6 +3,8 @@
 Wszystkie funkcje do operacji na bazie danych
 
 """
+from shutil import copyfile
+
 from szyfrowanie import Klucz, Deszyfruj, Szyfrowanie
 import walidacjeDlaBazyDanych
 import pyperclip
@@ -89,8 +91,8 @@ def UsunBaze():
             dodatek = time.strftime("%d_%H_%M_%S", time.localtime())
             zabezpieczony = "zabezpieczenie_bazy" + dodatek + ".db"
 
-            # copyfile("baza_glowna.db", zabezpieczony)
-            # print("wirtualne nadpisanie opcja w celach testowych wylaczona")
+            copyfile("baza_glowna.db", zabezpieczony)
+            print("wirtualne nadpisanie opcja w celach testowych wylaczona")
 
             print()
             print(color_text('red', ' BAZA ZOSTAŁA NADPISANA !\n'))
