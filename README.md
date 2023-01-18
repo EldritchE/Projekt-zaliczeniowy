@@ -35,7 +35,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
                 4) szukanie wpisów o nieokreślonym rodzaju serwisu
                 5) szukanie po loginie
                 6) szukanie po opisie
-                7) szukanie po dacie utworzenia (wpisanie tylko rou i miesiąca, wyświetla wpisy z danego miesiąca)
+                7) szukanie po dacie utworzenia (wpisanie tylko roku i miesiąca, wyświetla wpisy z danego miesiąca)
                 8) powrót do menu bazy danych
   
   - **Utworzenie nowej bazy danych**
