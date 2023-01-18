@@ -362,7 +362,12 @@ def SkasujWpisMenu():
     wybor = Menu_wybor_opcji_kasowanie()
     match wybor:
         case "1":
-            kasowane = input("Podaj ID kasowanego wpisu :\n")
+            try:
+                kasowane = int(input("Podaj ID kasowanego wpisu :\n"))
+            except ValueError:
+                print (color_text('red',"To nie jest prawidłowe ID"))
+                print("\n")
+                SkasujWpisMenu()
             con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
             cur = con.cursor()
             wyszukiwanie = f"SELECT * from Sejf where id= {kasowane}"

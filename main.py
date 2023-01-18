@@ -8,7 +8,7 @@ Główny moduł programu.
 
 import sys
 from wyborOpcjiGeneratora import Wybor
-from mainBaza import 3Baza
+from mainBaza import Baza
 from koloruj import color_text
 import masterPass
 from szyfrowanie import Deszyfruj
@@ -24,7 +24,6 @@ class ZlaWarotsc(Exception):
 
 class StringZamiastInt(Exception):
     pass
-
 
 def Wejscie(licznik):
     if licznik == 0:
