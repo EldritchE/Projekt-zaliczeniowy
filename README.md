@@ -52,10 +52,10 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
 - **_3: Ustaw- zresetuj hasło główne_**
 - **Zmiana hasła głównego**
 
-      typowy mechanizm zabezpeieczający przed zmianą hasła (podanie strego hasła, następnie powtórzenie 2 dwukrotne nowego
+      typowy mechanizm zabezpieczający przed zmianą hasła (podanie strego hasła, następnie powtórzenie 2 dwukrotne nowego
 - **Zapomniałem hasła**
 
-      typowy mechanizm zabezpeieczający przed utratą hasła, oparty na 2 pytaniach zabezpieczających
+      typowy mechanizm zabezpieczający przed utratą hasła, oparty na 2 pytaniach zabezpieczających
       zapamietanych przy tworzeniu hasła
   
 
