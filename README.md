@@ -23,7 +23,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
 
 - **_2: Opcje Bazy Danych_** gromadzącej utworzone hasła do róznego rodzaju serwisów i usług, gdzie wymagane są login i hasło
     -       jeśli baza danych haseł nie istnieje, uzytkownik z automatu jest przenoszony do opcji tworzenia bazy danych
-- 
+
   
   - **Dodanie wpisu** do bazy danych:  umozliwia stworzenie nowego wpisu serwis-login-hasło-opis
   - **Wyszukiwanie informacji** w bazie danych 
@@ -40,10 +40,22 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
   
   - **Utworzenie nowej bazy danych**
 
-           z mechanizmem zabezpieczenia poprzedniej bazy przed utratą w postaciu utorzenia pliku 'zabezpieczenie_bazy(aktualny czass).db'
+        z mechanizmem zabezpieczenia poprzedniej bazy przed utratą w postaciu utorzenia pliku 'zabezpieczenie_bazy(aktualny czass).db'
   - **Powrót do menu głownego**
 
 
 
-- **_Ustaw- zresetuj hasło główne_**
+- **_3: Ustaw- zresetuj hasło główne_**
+- **Zmiana hasła głównego**
+
+      typowy mechanizm zabezpeieczający przed zmianą hasła (podanie strego hasła, następnie powtórzenie 2 dwukrotne nowego
+- **Zapomniałem hasła**
+
+      typowy mechanizm zabezpeieczający przed utratą hasła, oparty na 2 pytaniach zabezpieczających
+      zapamietanych przy tworzeniu hasła
   
+
+- Informacje ogólne:
+  -
+ - hasło startowe '1111'
+ - załączona baza danych z przykładowymi wpisami
