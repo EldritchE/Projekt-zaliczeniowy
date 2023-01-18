@@ -6,5 +6,3 @@ def color_text(color, text):
         return text
     else:
         return colors[color] + text + '\033[0m'
-
-

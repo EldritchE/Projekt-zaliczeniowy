@@ -20,6 +20,8 @@ from koloruj import color_text
 
 class ZlaWarotsc(Exception):
     pass
+
+
 def Menu_wybor_opcji_kasowanie():
     """
     Funkcja realizująca wybory użytkownika z walidacją tych wyborów.
@@ -40,6 +42,7 @@ def Menu_wybor_opcji_kasowanie():
             print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             Menu_wybor_opcji_kasowanie()
 
+
 def Menu_wyswietl_kasowanie():
     """
     Wyświetlanie Menu kasowania wpisu.
@@ -54,6 +57,7 @@ def Menu_wyswietl_kasowanie():
     print("\n\n")
 
     return
+
 
 def UtworzNowaBaze():
     """
@@ -136,6 +140,7 @@ def UsunBaze():
 
             return
 
+
 def Powrot(wywolanie):
     """
     # warunek powrotu do poprzedniej funkcji w zależności skąd została wywołana 1 Głowne menu Bazy
@@ -147,6 +152,8 @@ def Powrot(wywolanie):
         WyswietlBaze(0)
     else:
         SkasujWpisMenu()
+
+
 def WyswietlBaze(wywolanie):
     """
     Funkcja realizująca wyświetlanie rekordów bazy danych.
@@ -218,7 +225,7 @@ def WyswietlBaze(wywolanie):
                 print(color_text('red', 'nie dokonano właściwego wyboru\n'))
                 return
     return
-        # mainBaza.Baza()
+
 
 
 def MenuDodajWpis():
@@ -348,13 +355,14 @@ def Wybory(wybor):
         case other:
             print(color_text('red', 'nie dokonano właściwego wyboru\n'))
             MenuDodajWpis()
-def SkasujWpisMenu():
 
+
+def SkasujWpisMenu():
     Menu_wyswietl_kasowanie()
-    wybor=Menu_wybor_opcji_kasowanie()
+    wybor = Menu_wybor_opcji_kasowanie()
     match wybor:
         case "1":
-            kasowane=input ("Podaj ID kasowanego wpisu :\n")
+            kasowane = input("Podaj ID kasowanego wpisu :\n")
             con = sqlite3.connect("baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
             cur = con.cursor()
             wyszukiwanie = f"SELECT * from Sejf where id= {kasowane}"
@@ -362,10 +370,10 @@ def SkasujWpisMenu():
             sqlite_select_query = wyszukiwanie
             cur.execute(sqlite_select_query)
             records = cur.fetchall()
-            if records ==[]:
-                print("\n",color_text('red',"Nie ma wpisu o takim ID, nic nie zostanie skasowane!\n "))
+            if records == []:
+                print("\n", color_text('red', "Nie ma wpisu o takim ID, nic nie zostanie skasowane!\n "))
             for row in records:
-                print(color_text('red',"Wpis do skasowania !"))
+                print(color_text('red', "Wpis do skasowania !"))
                 print('-' * 36)
                 print("ID: ", row[0])
                 print('-' * 36)
@@ -375,32 +383,28 @@ def SkasujWpisMenu():
                 print("Adres usługi: ", color_text('yellow', row[4]))
                 print("Data utworzenia: ", row[5])
                 print("Dodatkowy opis: ", color_text('blue', row[6]))
-                print(color_text('red',"-------------------------------------------"))
-                print(color_text('red',"Czy jesteś pewien,że chcesz to usunąć ? !!"))
+                print(color_text('red', "-------------------------------------------"))
+                print(color_text('red', "Czy jesteś pewien,że chcesz to usunąć ? !!"))
                 print(color_text('red', "------------------------------------------"))
                 print("\n\n")
 
                 decyzja = input("T/N\n").upper()
-                if decyzja== "N":
+                if decyzja == "N":
                     print("\n")
-                    print(color_text('green',"Wpis nie został Usunięty !\n"))
+                    print(color_text('green', "Wpis nie został Usunięty !\n"))
                     SkasujWpisMenu()
                 elif decyzja == "T":
                     print("\n")
-                    kasowany= f"DELETE FROM Sejf WHERE id={kasowane}"
-                    print (f"Wpis o ID = {kasowane}")
-                    print(color_text('red',"Został bezpowrotnie usuniety!\n\n"))
+                    kasowany = f"DELETE FROM Sejf WHERE id={kasowane}"
+                    print(f"Wpis o ID = {kasowane}")
+                    print(color_text('red', "Został bezpowrotnie usuniety!\n\n"))
                     cur.execute(kasowany)
                     con.commit()  # wykonanie
                     con.close()  # zamknięcie bazy
                 else:
-                    print(color_text('red',"Zły wybór !"))
+                    print(color_text('red', "Zły wybór !"))
             SkasujWpisMenu()
 
         case "2":
             wywolanie = 2
             WyswietlBaze(wywolanie)
-
-
-
-

@@ -8,7 +8,7 @@ Główny moduł programu.
 
 import sys
 from wyborOpcjiGeneratora import Wybor
-from mainBaza import Baza
+from mainBaza import 3Baza
 from koloruj import color_text
 import masterPass
 from szyfrowanie import Deszyfruj

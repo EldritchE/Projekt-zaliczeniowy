@@ -89,7 +89,6 @@ def DodawanieWpisu(pswd, pyt1, odp1, pyt2, odp2):
     :param rodzaj_wpisu:
     :param login:
     :param haslo:
-    :param adres:
     :param opis:
     :return:
     """

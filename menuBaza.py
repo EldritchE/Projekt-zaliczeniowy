@@ -10,7 +10,6 @@ import mainBaza
 from koloruj import color_text
 
 
-
 def Menu_wyswietl():
     """
     Wyświetlanie Menu Bazy danych.
@@ -48,7 +47,6 @@ def Menu_wyswietl2():
     print("\n\n")
 
     return
-
 
 
 def Menu_wybor_opcji1():
