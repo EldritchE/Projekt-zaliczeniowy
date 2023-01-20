@@ -76,8 +76,13 @@ def MenuGlowne():
             MenuGlowne()
 
 
-print(color_text("yellow",
-                 "Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
-print("--" * 50)
-licznik = 3
-Wejscie(licznik)
+def main():
+    print(color_text("yellow",
+                     "Witaj w programie do generowania haseł i nie tylko (wersja rozwojowa, na ile pozwolą umiejętności :D"))
+    print("--" * 50)
+    licznik = 3
+    Wejscie(licznik)
+
+
+if __name__ == '__main__':
+    main()
