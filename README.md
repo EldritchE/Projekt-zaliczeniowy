@@ -61,7 +61,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
 
 - Informacje ogólne:
   -
- - projekt pisany w Pycharm
+ - projekt pisany w Pycharmie
  - został przygotowany plik Dockerfile
  - aplikacja posiada dwa tryby uruchomienia
  - przez plik run.sh uruchamiamy standardową aplikację bez bazy danych i bez hasła głównego 
