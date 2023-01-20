@@ -32,13 +32,13 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
            do menu przeszukiwania, celem odnalezienia ID
   - **Wyszukiwanie informacji** w bazie danych 
   
-  
-                1) wyświetlanie zawartości całej bazy dnaych
-                2) szukanie wpisów po zadanym adresie www
-                3) szukanie po zadanym adresie email
+        
+                1) wyświetlanie zawartości całej bazy dnaych 
+                2) szukanie wpisów po zadanym adresie www    (wpis www jest wyrózniony)
+                3) szukanie po zadanym adresie email         (wpis email jest wyrózniony)
                 4) szukanie wpisów o nieokreślonym rodzaju serwisu
-                5) szukanie po loginie
-                6) szukanie po opisie
+                5) szukanie po loginie                       (wpis login jest wyrózniony)
+                6) szukanie po opisie                        (wpis opisu jest wyrózniony)
                 7) szukanie po dacie utworzenia (wpisanie tylko roku i miesiąca, wyświetla wpisy z danego miesiąca)
                 8) powrót do menu bazy danych
   
