@@ -5,6 +5,7 @@ z bazy danych
 import sqlite3
 from .szyfrowanie import Deszyfruj, Szyfrowanie
 from .koloruj import color_text
+from .daneBazy import SciezkaBazyGlownej
 
 
 def WyswietlZadane(wyszukiwanie, wyroznienie=0):
@@ -15,7 +16,7 @@ def WyswietlZadane(wyszukiwanie, wyroznienie=0):
         :return:
         """
     przerwana = False  # zmienna determinująca wyswietlanie komunikatu o ilości znalezionych rekordów jeśli przerwano proces wyświetlania.
-    con = sqlite3.connect("db/baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
+    con = sqlite3.connect(SciezkaBazyGlownej())  # procedury otwarcia bazy danych ustawienia kursora
     cur = con.cursor()
 
     sqlite_select_query = wyszukiwanie  # przypisanie zdefiniowanej opcji SELECT dla bazy ze względu na wcześniejsze wybory co do przeszukania

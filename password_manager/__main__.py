@@ -8,9 +8,10 @@ Główny moduł programu.
 
 from .wyborOpcjiGeneratora import Wybor
 from .mainBaza import Baza
+from .baza import SprawdzenieCzyIsntniejeBaza, UtworzBaze
 from .koloruj import color_text
 from . import masterPass
-from .masterPass import pobierzHaslo
+from .masterPass import pobierzHaslo, czyJestHaslo, budujHaslo
 
 
 class ZlaWarotsc(Exception):
@@ -21,6 +22,12 @@ class StringZamiastInt(Exception):
     pass
 
 def Wejscie(licznik):
+    if czyJestHaslo():
+        budujHaslo()
+
+    if SprawdzenieCzyIsntniejeBaza():
+        UtworzBaze()
+
     if licznik == 0:
         print(color_text("red", "Nie znasz Hasła! Do widzenia!"))
 

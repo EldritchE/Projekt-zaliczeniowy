@@ -16,6 +16,7 @@ from .menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
 from . import wyswietlacz
 import re
 from .koloruj import color_text
+from .daneBazy import SciezkaBazyGlownej
 
 
 class ZlaWarotsc(Exception):
@@ -81,7 +82,7 @@ def SprawdzenieCzyIsntniejeBaza():
     :return:
     """
     try:  # sprawdzanie, czy baza już istnieje
-        baza = open("db/baza_glowna.db", "r")
+        baza = open(SciezkaBazyGlownej(), "r")
         baza.close()
         return False  # zwraca False, gdy baza istnieje
     except FileNotFoundError:
@@ -94,7 +95,7 @@ def UtworzBaze():
     :return:
     """
     # print("ok tworzymy baze wirtualnie poniewaz parcujemy na razie i nie trzeba nam 200 baz :) ")
-    con = sqlite3.connect("db/baza_glowna.db")
+    con = sqlite3.connect(SciezkaBazyGlownej())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS Sejf")  # jeśli istnieje usuń
@@ -128,7 +129,7 @@ def UsunBaze():
             dodatek = time.strftime("%d_%H_%M_%S", time.localtime())
             zabezpieczony = "zabezpieczenie_bazy" + dodatek + ".db"
 
-            copyfile("db/baza_glowna.db", zabezpieczony)
+            copyfile(SciezkaBazyGlownej(), zabezpieczony)
             print("wirtualne nadpisanie opcja w celach testowych wylaczona")
 
             print()
@@ -323,7 +324,7 @@ def DodawanieWpisu(rodzaj_wpisu, login, haslo, adres, opis):
     """
     data = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
-    con = sqlite3.connect("db/baza_glowna.db")
+    con = sqlite3.connect(SciezkaBazyGlownej())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     cur.execute('INSERT INTO Sejf VALUES(NULL, ?, ?, ?, ?, ?, ?);', (rodzaj_wpisu, login, haslo, adres, data, opis))
@@ -368,7 +369,7 @@ def SkasujWpisMenu():
                 print (color_text('red',"To nie jest prawidłowe ID"))
                 print("\n")
                 SkasujWpisMenu()
-            con = sqlite3.connect("db/baza_glowna.db")  # procedury otwarcia bazy danych ustawienia kursora
+            con = sqlite3.connect(SciezkaBazyGlownej())  # procedury otwarcia bazy danych ustawienia kursora
             cur = con.cursor()
             wyszukiwanie = f"SELECT * from Sejf where id= {kasowane}"
 

@@ -10,7 +10,7 @@ które umożliwią dostęp do aplikacji i reset hasła
 from .koloruj import color_text
 import sqlite3
 from .szyfrowanie import Szyfrowanie, Deszyfruj
-
+from .daneBazy import SciezkaBazyHasla
 
 class ZlaWarotsc(Exception):
     pass
@@ -21,7 +21,7 @@ class StringZamiastInt(Exception):
 
 
 def pobierzHaslo():
-    con = sqlite3.connect("db/p.db")
+    con = sqlite3.connect(SciezkaBazyHasla())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     wyszukiwanie = """SELECT * From Mpassword WHERE Haslo not null"""
@@ -35,7 +35,7 @@ def pobierzHaslo():
 
 def sprawdzCzyZnaszHaslo():
     oldpswd = input("Hasło: ")
-    con = sqlite3.connect("db/p.db")
+    con = sqlite3.connect(SciezkaBazyHasla())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     wyszukiwanie = """SELECT * From Mpassword WHERE Haslo not null"""
@@ -52,7 +52,7 @@ def sprawdzCzyZnaszHaslo():
 
 
 def sprawdzeniePytan():
-    con = sqlite3.connect("db/p.db")
+    con = sqlite3.connect(SciezkaBazyHasla())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     wyszukiwanie = """SELECT * From Mpassword """
@@ -94,7 +94,7 @@ def DodawanieWpisu(pswd, pyt1, odp1, pyt2, odp2):
     """
 
     nowyPlikHasla()
-    con = sqlite3.connect("db/p.db")
+    con = sqlite3.connect(SciezkaBazyHasla())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
 
@@ -136,7 +136,7 @@ def czyJestHaslo():
         :return:
         """
     try:  # sprawdzanie, czy baza już istnieje
-        baza = open("db/p.db", "r")
+        baza = open(SciezkaBazyHasla(), "r")
         baza.close()
         return False  # zwraca False, gdy baza istnieje
     except FileNotFoundError:
@@ -147,7 +147,7 @@ def czyJestHaslo():
 
 
 def nowyPlikHasla():
-    con = sqlite3.connect("db/p.db")
+    con = sqlite3.connect(SciezkaBazyHasla())
     con.row_factory = sqlite3.Row  # ustawia parametr row_factory w celu umozliwienia dostępu do kolumny nie tylko po indekise ale tez po nazwie
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS Mpassword")  # jeśli istnieje usuń
