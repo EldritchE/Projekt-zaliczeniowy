@@ -5,7 +5,7 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\baza_glowna.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\db\baza_glowna.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
@@ -17,7 +17,7 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\p.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\db\p.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
@@ -29,7 +29,7 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\zabezpieczenie_bazy18_14_27_13.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\konta\Desktop\Python zaawansowany\pythonProject3\db\zabezpieczenie_bazy18_14_27_13.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
