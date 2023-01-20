@@ -5,9 +5,9 @@ Możliwości wyboru dotyczą długości hasła, zawierania co najmniej jednego z
 oraz zawierania co najmniej jednej cyfry
 """
 
-from zapiszClipboard import dodajDoSchowka
-from generator import Generowanie
-from koloruj import color_text
+from .zapiszClipboard import dodajDoSchowka
+from .generator import Generowanie
+from .koloruj import color_text
 
 
 class ZlyWybor(Exception):

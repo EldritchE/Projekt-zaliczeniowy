@@ -7,9 +7,9 @@ w przypadku zagubienia hasła, seria pytań uwierzytelniających,
 które umożliwią dostęp do aplikacji i reset hasła
 """
 
-from koloruj import color_text
+from .koloruj import color_text
 import sqlite3
-from szyfrowanie import Szyfrowanie, Deszyfruj
+from .szyfrowanie import Szyfrowanie, Deszyfruj
 
 
 class ZlaWarotsc(Exception):

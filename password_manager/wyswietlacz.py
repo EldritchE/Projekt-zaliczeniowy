@@ -3,8 +3,8 @@ Moduł odpowiadający za wyszukiwanie i wyświetlanie
 z bazy danych
 """
 import sqlite3
-from szyfrowanie import Deszyfruj, Szyfrowanie
-from koloruj import color_text
+from .szyfrowanie import Deszyfruj, Szyfrowanie
+from .koloruj import color_text
 
 
 def WyswietlZadane(wyszukiwanie, wyroznienie=0):

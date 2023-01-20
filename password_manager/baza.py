@@ -5,17 +5,17 @@ Wszystkie funkcje do operacji na bazie danych
 """
 from shutil import copyfile
 
-from szyfrowanie import Klucz, Deszyfruj, Szyfrowanie
-import walidacjeDlaBazyDanych
+from .szyfrowanie import Klucz, Deszyfruj, Szyfrowanie
+from . import walidacjeDlaBazyDanych
 import pyperclip
 import sqlite3
-import mainBaza
+from . import mainBaza
 import time
-import wyborOpcjiGeneratora
-from menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
-import wyswietlacz
+from . import wyborOpcjiGeneratora
+from .menuBaza import Menu_wyswietl2, Menu_wybor_opcji1
+from . import wyswietlacz
 import re
-from koloruj import color_text
+from .koloruj import color_text
 
 
 class ZlaWarotsc(Exception):

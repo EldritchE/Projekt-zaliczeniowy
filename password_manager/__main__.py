@@ -6,11 +6,11 @@ Główny moduł programu.
 
 """
 
-from wyborOpcjiGeneratora import Wybor
-from mainBaza import Baza
-from koloruj import color_text
-import masterPass
-from masterPass import pobierzHaslo
+from .wyborOpcjiGeneratora import Wybor
+from .mainBaza import Baza
+from .koloruj import color_text
+from . import masterPass
+from .masterPass import pobierzHaslo
 
 
 class ZlaWarotsc(Exception):

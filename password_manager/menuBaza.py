@@ -6,8 +6,8 @@ Wyświetlanie menu
 oraz moduł obsługujący wybory użytkownika, oraz ich walidację.
 
 """
-import mainBaza
-from koloruj import color_text
+from . import mainBaza
+from .koloruj import color_text
 
 
 def Menu_wyswietl():
