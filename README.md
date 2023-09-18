@@ -69,7 +69,7 @@ Aplikacja o funkcjonalności menadżera i generatora haseł.
         odpowiedz na 1 pytanie sprawdzające przy zmianie hasła '_ja_'
         odpowiedz na 2 pytanie sprawdzające przy zmianie hasła '_tak_'
 
- - dane do logowania do repozytorium GiHub do projektu : user :EldritchE   pass: eY@M973uAMzcTGMAhd@$
+ - dane do logowania do repozytorium GiHub do projektu : ************************************
  - Dostęp do repozytorium przewidziano do 20 lutego 2023, 
  - Projekt powstał w dwóch repozytoriach, ze względu na awarię pierwszego zostało utworzone drugie :)
  - załączono plik 'requirements.txt'
